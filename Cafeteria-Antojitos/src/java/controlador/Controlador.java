@@ -7,17 +7,21 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Cargo;
+import modelo.CargoDAO;
 
 /**
  *
  * @author izumi
  */
 public class Controlador extends HttpServlet {
-
+    Cargo cargo = new Cargo();
+    CargoDAO cargoDAO = new CargoDAO();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -29,18 +33,38 @@ public class Controlador extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Controlador</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Controlador at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String menu = request.getParameter("menu");
+        String accion = request.getParameter("accion");
+        if (menu.equals("Cargo")){
+            
+            switch(accion){
+                case "ListarCargo":
+                    List listaCargo = cargoDAO.listar();
+                    request.setAttribute("cargos", listaCargo);
+                    break;
+                case "AgregarCargo":
+                        String tipoCargo = request.getParameter("txtTipoCargo");
+                        cargo.setTipoCargo(tipoCargo);
+                        cargoDAO.agregar(cargo);
+                        request.getRequestDispatcher("Controlador?menu=Cargo&accion=ListarCargo").forward(request, response);
+                        break;
+               
+                case "Editar":
+                        
+                        break;    
+                        
+                case "Actualizar":
+                        
+                        break;
+                        
+                case "Eliminar":
+                        
+                        break;
+            }
+            
+            
+            
+            request.getRequestDispatcher("Cargo.jsp").forward(request, response);
         }
     }
 
