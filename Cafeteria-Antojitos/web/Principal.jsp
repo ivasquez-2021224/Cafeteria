@@ -13,42 +13,42 @@
 
         <title>Menu Principal</title>
     </head>
-    <body>
-           <nav class="navbar navbar-expand-lg nvbar-light bg-info">
+    <body style="background-color: #b3b3b1;">
+        <nav class="navbar navbar-expand-lg nvbar-light" style="background-color: #49240f">
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Home" target="myFrame">Home</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Home" target="myFrame">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Clientes" target="myFrame">Clientes</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Clientes&accion=ListarCliente" target="myFrame">Clientes</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Categorias" target="myFrame">Categorias</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Categorias" target="myFrame">Categorias</a>
                   </li>
                   <li class="nav-item">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Proveedores" target="myFrame">Proveedores</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Proveedores" target="myFrame">Proveedores</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Cargo&accion=ListarCargo" target="myFrame">Cargo</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Cargo&accion=ListarCargo" target="myFrame">Cargo</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Sucursal" target="myFrame">Sucursal</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Sucursal" target="myFrame">Sucursal</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Marcas" target="myFrame">Marcas</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Marcas" target="myFrame">Marcas</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Productos" target="myFrame">Productos</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Productos" target="myFrame">Productos</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Empleados" target="myFrame">Empleados</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Empleados" target="myFrame">Empleados</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Ventas" target="myFrame">Ventas</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Ventas" target="myFrame">Ventas</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=DetalleVenta" target="myFrame">Detalle de la venta</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=DetalleVenta" target="myFrame">Detalle de la venta</a>
                   </li>
                 </ul>
               </div>

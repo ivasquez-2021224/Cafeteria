@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Cargo;
 import modelo.CargoDAO;
+import modelo.Cliente;
+import modelo.ClienteDAO;
 
 /**
  *
@@ -22,6 +24,8 @@ import modelo.CargoDAO;
 public class Controlador extends HttpServlet {
     Cargo cargo = new Cargo();
     CargoDAO cargoDAO = new CargoDAO();
+    Cliente cliente = new Cliente();
+    ClienteDAO clienteDAO = new ClienteDAO();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -61,10 +65,36 @@ public class Controlador extends HttpServlet {
                         
                         break;
             }
-            
-            
-            
             request.getRequestDispatcher("Cargo.jsp").forward(request, response);
+        }else if(menu.equals("Clientes")){
+            switch(accion){
+                case "ListarCliente":
+                    List listaClientes = clienteDAO.listarClientes();
+                    request.setAttribute("clientes", listaClientes);
+                    break;
+                case "AgregarCliente":
+                    String DPI = request.getParameter("txtDPICliente");
+                    String nombres = request.getParameter("txtNombresCliente");
+                    String direccion = request.getParameter("txtDireccionCliente");
+                    String telefono = request.getParameter("txtTelefonoCliente");
+                    cliente.setDPICliente(DPI);
+                    cliente.setNombresCliente(nombres);
+                    cliente.setDireccionCliente(direccion);
+                    cliente.setTelefonoCliente(telefono);
+                    clienteDAO.agregarCliente(cliente);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=ListarCliente").forward(request, response);
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;
+            }
+            request.getRequestDispatcher("Clientes.jsp").forward(request, response);
         }
     }
 

@@ -20,7 +20,7 @@ public class CargoDAO {
     //MÉTODO DE LISTAR
     
     public List listar(){
-        String sql = "select * from cargo";
+        String sql = "select * from Cargo";
         List<Cargo> listaCargo = new ArrayList<Cargo>();
         try{
             con = cn.Conexion();
