@@ -27,9 +27,6 @@
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Categorias" target="myFrame">Categorias</a>
                   </li>
                   <li class="nav-item">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Proveedores" target="myFrame">Proveedores</a>
-                  </li>
-                  <li class="nav-item">
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Cargo&accion=ListarCargo" target="myFrame">Cargo</a>
                   </li>
                   <li class="nav-item">
@@ -50,6 +47,9 @@
                   <li class="nav-item">
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=DetalleVenta" target="myFrame">Detalle de la venta</a>
                   </li>
+                  <li class="nav-item">
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" class="btn btn-outline-light" href="Controlador?menu=Proveedores&accion=ListarProveedores" target="myFrame">Proveedores</a>
+                    </li>
                 </ul>
               </div>
          </nav>

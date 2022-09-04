@@ -16,6 +16,8 @@ import modelo.Cargo;
 import modelo.CargoDAO;
 import modelo.Cliente;
 import modelo.ClienteDAO;
+import modelo.Proveedor;
+import modelo.ProveedorDAO;
 
 /**
  *
@@ -26,6 +28,8 @@ public class Controlador extends HttpServlet {
     CargoDAO cargoDAO = new CargoDAO();
     Cliente cliente = new Cliente();
     ClienteDAO clienteDAO = new ClienteDAO();
+    Proveedor proveedor = new Proveedor();
+    ProveedorDAO proveedorDAO = new ProveedorDAO();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -95,6 +99,26 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Clientes.jsp").forward(request, response);
+        }else if(menu.equals("Proveedores")){
+            switch(accion){
+                case "ListarProveedores":
+                    List listaProveedor = proveedorDAO.listarProveedores();
+                    request.setAttribute("proveedores", listaProveedor);
+                    break;
+                case "AgregarProveedor":
+                    String Nombre = request.getParameter("txtNombresProveedor");
+                    String Direccion = request.getParameter("txtDireccionProveedor");
+                    String Telefono = request.getParameter("txtTelefonoProveedor");
+                    proveedor.setNombresProveedor(Nombre);
+                    proveedor.setDireccion(Direccion);
+                    proveedor.setTelefono(Telefono);
+                    proveedorDAO.agregarProveedor(proveedor);
+                    request.getRequestDispatcher("Controlador?menu=Proveedores&accion=ListarProveedores").forward(request, response);
+                    break;
+            }
+            
+            
+            request.getRequestDispatcher("Proveedores.jsp").forward(request, response);
         }
     }
 
