@@ -16,6 +16,8 @@ import modelo.Cargo;
 import modelo.CargoDAO;
 import modelo.Cliente;
 import modelo.ClienteDAO;
+import modelo.Empleado;
+import modelo.EmpleadoDAO;
 import modelo.Proveedor;
 import modelo.ProveedorDAO;
 import modelo.Ventas;
@@ -34,6 +36,8 @@ public class Controlador extends HttpServlet {
     ProveedorDAO proveedorDAO = new ProveedorDAO();
     Ventas ventas = new Ventas();
     VentasDAO ventasDAO = new VentasDAO();
+    EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+    Empleado empleado = new Empleado();    
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -155,6 +159,38 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Ventas.jsp").forward(request, response);
+        }else if(menu.equals("Empleados")){
+            switch(accion){
+                case "ListarEmpleados":
+                    List listaEmpleados = empleadoDAO.listar();
+                    request.setAttribute("empleados", listaEmpleados);
+                    break;
+                case "AgregarEmpleado":
+                    String  DPI = request.getParameter("txtDPIEmpleado");
+                    String nombres = request.getParameter("txtNombresEmpleado");
+                    String telefono = request.getParameter("txtTelefonoEmpleado");
+                    String user = request.getParameter("txtUsuario");
+                    int codCar = Integer.parseInt(request.getParameter("txtCodigoCargo"));
+                    int codSuc = Integer.parseInt(request.getParameter("txtCodigoSucursal"));
+                    empleado.setDPIEmpleado(DPI);
+                    empleado.setNombresEmpleado(nombres);
+                    empleado.setTelefonoEmpleado(telefono);
+                    empleado.setUsuario(user);
+                    empleado.setCodigoCargo(codCar);
+                    empleado.setCodigoSucursal(codSuc);
+                    empleadoDAO.agregar(empleado);
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=ListarEmpleados").forward(request, response);
+                    break;
+                case "Editar":
+                    break;
+                case "Actualizar":
+                    break;
+                case "Eliminar":
+                    break;
+            }
+            request.getRequestDispatcher("Empleados.jsp").forward(request, response);
+        }else if(menu.equals("Principal")){
+            request.getRequestDispatcher("Principal.jsp").forward(request, response);
         }
     }
 
