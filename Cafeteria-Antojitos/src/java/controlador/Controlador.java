@@ -22,6 +22,8 @@ import modelo.Productos;
 import modelo.ProductosDAO;
 import modelo.Proveedor;
 import modelo.ProveedorDAO;
+import modelo.Sucursal;
+import modelo.SucursalDAO;
 import modelo.Ventas;
 import modelo.VentasDAO;
 
@@ -41,7 +43,9 @@ public class Controlador extends HttpServlet {
     EmpleadoDAO empleadoDAO = new EmpleadoDAO();
     Empleado empleado = new Empleado();
     Productos producto = new Productos();
-    ProductosDAO productoDAO = new ProductosDAO();    
+    ProductosDAO productoDAO = new ProductosDAO();
+    Sucursal sucursal = new Sucursal();
+    SucursalDAO sucursalDAO = new SucursalDAO();    
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -221,6 +225,32 @@ public class Controlador extends HttpServlet {
         
             request.getRequestDispatcher("Productos.jsp").forward(request, response);
             
+        }else if(menu.equals("Sucursal")){
+            switch(accion){
+                case "ListarSucursal":
+                    List listaSucursal = sucursalDAO.listarSucursal();
+                    request.setAttribute("sucursales", listaSucursal);
+                    break;
+                case "AgregarSucursal":
+                    String DPI = request.getParameter("txtCodigoSucursal");
+                    String nombres = request.getParameter("txtNombreSucursal");
+                    String direccion = request.getParameter("txtDireccion");
+                    sucursal.setNombreSucursal(nombres);
+                    sucursal.setDireccion(direccion);
+                    sucursalDAO.agregarSucursal(sucursal);
+                    request.getRequestDispatcher("Controlador?menu=Sucursal&accion=ListarSucursal").forward(request, response);
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;
+            }
+            request.getRequestDispatcher("Sucursal.jsp").forward(request, response);
         }
     }
 
