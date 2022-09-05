@@ -1,7 +1,7 @@
-Drop database if exists CafeteriaAntojitos;
-Create database CafeteriaAntojitos;
+Drop database if exists DBCafeteriaAntojitos;
+Create database DBCafeteriaAntojitos;
 
-use CafeteriaAntojitos;
+use DBCafeteriaAntojitos;
 
 Create table Clientes(
 	codigoCliente int not null auto_increment,
@@ -51,7 +51,7 @@ Create table Marcas(
 
 Create table Productos(
 	codigoProducto int not null auto_increment,
-	nombreProdcuto varchar(200) not null,
+	nombreProducto varchar(200) not null,
     precio double not null,
     stock int not null,
     codigoMarca int not null,
@@ -80,7 +80,7 @@ Create table Empleados(
 
 Create table Ventas(
 	codigoVenta int not null auto_increment,
-    fecha date not null,
+    fecha varchar(10) not null,
     monto double not null,
     numeroSerie varchar(15),
     codigoCliente int not null,
@@ -183,15 +183,15 @@ insert into Marcas (nombreMarca, codigoProveedor)
     
 select * from Marcas;
     
-insert into Productos (nombreProdcuto, precio, stock, codigoMarca, codigoCategoria) 
+insert into Productos (nombreProducto, precio, stock, codigoMarca, codigoCategoria) 
 	values ('Huevos Rancheros', '900.00', '30', '1', '1');
-insert into Productos (nombreProdcuto, precio, stock, codigoMarca, codigoCategoria) 
+insert into Productos (nombreProducto, precio, stock, codigoMarca, codigoCategoria) 
 	values ('Divorciados', '500.00', '20', '2', '2');
-insert into Productos (nombreProdcuto, precio, stock, codigoMarca, codigoCategoria) 
+insert into Productos (nombreProducto, precio, stock, codigoMarca, codigoCategoria) 
 	values ('Pollo en Crema', '450.00', '30', '3', '3');
-insert into Productos (nombreProdcuto, precio, stock, codigoMarca, codigoCategoria) 
+insert into Productos (nombreProducto, precio, stock, codigoMarca, codigoCategoria) 
 	values ('Costilla', '1500.00', '25', '4', '4');
-insert into Productos (nombreProdcuto, precio, stock, codigoMarca, codigoCategoria) 
+insert into Productos (nombreProducto, precio, stock, codigoMarca, codigoCategoria) 
 	values ('Pastelitos', '500.00', '50', '5', '5');
     
 select * from Productos;
