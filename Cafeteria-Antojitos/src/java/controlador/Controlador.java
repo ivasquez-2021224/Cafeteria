@@ -14,20 +14,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Cargo;
 import modelo.CargoDAO;
-import modelo.Categorias;
-import modelo.CategoriasDAO;
 import modelo.Cliente;
 import modelo.ClienteDAO;
-import modelo.DetalleVenta;
-import modelo.DetalleVentaDAO;
 import modelo.Empleado;
 import modelo.EmpleadoDAO;
-import modelo.Productos;
-import modelo.ProductosDAO;
+import modelo.Marcas;
+import modelo.MarcasDAO;
 import modelo.Proveedor;
 import modelo.ProveedorDAO;
-import modelo.Sucursal;
-import modelo.SucursalDAO;
 import modelo.Ventas;
 import modelo.VentasDAO;
 
@@ -45,15 +39,10 @@ public class Controlador extends HttpServlet {
     Ventas ventas = new Ventas();
     VentasDAO ventasDAO = new VentasDAO();
     EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-    Empleado empleado = new Empleado();
-    Productos producto = new Productos();
-    ProductosDAO productoDAO = new ProductosDAO();
-    Sucursal sucursal = new Sucursal();
-    SucursalDAO sucursalDAO = new SucursalDAO();   
-    Categorias categorias = new Categorias();
-    CategoriasDAO categoriasDAO = new CategoriasDAO();
-    DetalleVentaDAO detalleDAO = new DetalleVentaDAO();
-    DetalleVenta detalle = new DetalleVenta();
+    Empleado empleado = new Empleado();   
+    Marcas marcas = new Marcas();
+    MarcasDAO marcasDAO = new MarcasDAO();
+    
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -207,121 +196,33 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Empleados.jsp").forward(request, response);
         }else if(menu.equals("Principal")){
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
-        }else if(menu.equals("Productos")){
+        }else if(menu.equals("Marcas")){
             switch(accion){
-                case "ListarProducto":
-                    List listaProductos = productoDAO.listarProducto();
-                    request.setAttribute("Productos", listaProductos);
+                
+                case "Listar":
+                    List ListaMarca = marcasDAO.listar();
+                    request.setAttribute("marcas", ListaMarca);
                     break;
-                case "AgregarProducto":
-                    String Nombre = request.getParameter("txtNombreProducto");
-                    double Precio = Double.parseDouble(request.getParameter("txtPrecio")); 
-                    int Stock = Integer.parseInt(request.getParameter("txtStock"));
-                    int Marca = Integer.parseInt(request.getParameter("txtCodigoMarca"));
-                    int Categoria = Integer.parseInt(request.getParameter("txtCodigoCategoria"));
-                    producto.setNombreProducto(Nombre);
-                    producto.setPrecio(Precio);
-                    producto.setStock(Stock);
-                    producto.setCodigoMarca(Marca);
-                    producto.setCodigoCategoria(Categoria);
-                    productoDAO.agregar(producto);
-                    request.getRequestDispatcher("Controlador?menu=Productos&accion=ListarProducto").forward(request, response);
+                
+                case "Agregar":
+                    String Nombre = request.getParameter("txtNombreMarcas");
+                    String codProveedor = request.getParameter("txtCodigoProveedor");
+                    marcas.setNombreMarca("Nombre");
+                    marcas.setCodigoProveedor("codProveedor");
+                    marcasDAO.agregar(marcas);
+                    request.getRequestDispatcher("Controlador?menu=Marcas&accion=ListarMarcas").forward(request, response);
                     
-                    break;
-                   
-            }
-        
-            request.getRequestDispatcher("Productos.jsp").forward(request, response);
-            
-        }else if(menu.equals("Sucursal")){
-            switch(accion){
-                case "ListarSucursal":
-                    List listaSucursal = sucursalDAO.listarSucursal();
-                    request.setAttribute("sucursales", listaSucursal);
-                    break;
-                case "AgregarSucursal":
-                    String DPI = request.getParameter("txtCodigoSucursal");
-                    String nombres = request.getParameter("txtNombreSucursal");
-                    String direccion = request.getParameter("txtDireccion");
-                    sucursal.setNombreSucursal(nombres);
-                    sucursal.setDireccion(direccion);
-                    sucursalDAO.agregarSucursal(sucursal);
-                    request.getRequestDispatcher("Controlador?menu=Sucursal&accion=ListarSucursal").forward(request, response);
                     break;
                 case "Editar":
-                    
                     break;
                 case "Actualizar":
-                    
                     break;
                 case "Eliminar":
-                    
                     break;
+                                   
+    
             }
-            request.getRequestDispatcher("Sucursal.jsp").forward(request, response);
-        }else if(menu.equals("Categorias")){
-            switch(accion){
-                case "ListarCategorias":
-                    List listaCategorias = categoriasDAO.listar();
-                    request.setAttribute("categorias", listaCategorias);
-                    break;
-                case "AgregarCategorias":
-                    String nombreCategoria = request.getParameter("txtNombreCategoria");
-                    String descripcionCategoria = request.getParameter("txtDescripcionCategoria");
-                    categorias.setNombreCategoria(nombreCategoria);
-                    categorias.setDescripcionCategoria(descripcionCategoria);
-                    categoriasDAO.agregar(categorias);
-                    request.getRequestDispatcher("Controlador?menu=Categorias&accion=ListarCategorias").forward(request, response);
-                    break;
-                case "Editar":
-                    
-                    break;
-                case "Actualizar":
-                    
-                    break;
-                case "Eliminar":
-                    
-                    break;    
-            }
-            request.getRequestDispatcher("Categorias.jsp").forward(request, response);
-        }else if(menu.equals("DetalleVenta")){
-            
-                       
-            switch(accion){
-                case "ListarDetalle":
-                    List listarDetalle = detalleDAO.listarDetalleVenta();
-                    request.setAttribute("Detalles", listarDetalle);
-                    break;
-                case "AgregarDetalle":
-                       String cantidad = request.getParameter("txtcantidad");
-                        String precio = request.getParameter("txtPrecio");
-                        String codigoProducto = request.getParameter("txtCodProducto");
-                        String codigoVenta = request.getParameter("txtCodVenta");
-                        detalle.setCantidad(Integer.parseInt(cantidad));
-                        detalle.setPrecio(Double.parseDouble(precio));
-                        detalle.setCodigoProducto(Integer.parseInt(codigoProducto));
-                        detalle.setCodigoVenta(Integer.parseInt(codigoVenta));
-                        detalleDAO.agregar(detalle);
-                        request.getRequestDispatcher("Controlador?menu=DetalleVenta&accion=ListarDetalle").forward(request, response);
-                        break;
-                        
-                        
-               
-                case "Editar":
-                        
-                        break;    
-                        
-                case "Actualizar":
-                        
-                        break;
-                        
-                case "Eliminar":
-                        
-                        break;
-            }
-            
-            request.getRequestDispatcher("DetalleVenta.jsp").forward(request, response);
-            
+            request.getRequestDispatcher("Marcas.jsp").forward(request, response);
         }
     }
 
