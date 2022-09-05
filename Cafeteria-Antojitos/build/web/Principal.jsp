@@ -4,6 +4,7 @@
     Author     : izumi
 --%>
 
+<%@page import="modelo.Empleado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,7 +25,7 @@
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Clientes&accion=ListarCliente" target="myFrame">Clientes</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Categorias&accion=ListarCategorias" target="myFrame">Categorias</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Categorias" target="myFrame">Categorias</a>
                   </li>
                   <li class="nav-item">
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Cargo&accion=ListarCargo" target="myFrame">Cargo</a>
@@ -45,14 +46,31 @@
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Ventas&accion=ListarVentas" target="myFrame">Ventas</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=DetalleVenta&accion=ListarDetalle" target="myFrame">Detalle de la venta</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=DetalleVenta" target="myFrame">Detalle de la venta</a>
                   </li>
                   <li class="nav-item">
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" class="btn btn-outline-light" href="Controlador?menu=Proveedores&accion=ListarProveedores" target="myFrame">Proveedores</a>
                     </li>
                 </ul>
               </div>
-         </nav>
+            <div class="dropdown">
+            <button style="border:none" class="btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                ${usuario.getNombresEmpleado()}
+            </button>
+            <div class="dropdown-menu dropdown-menu-right " aria-labellebdy="dropdownMenuButton" >
+                <a class="dropdown-item text-center" href="#" >
+                    <img src="img/usuario.png" alt="" width="50">
+                </a>
+                <a class="dropdown-item text-center" href="#">${usuario.getUsuario()}</a>
+                <a class="dropdown-item text-center" href="#">usuario@gmail.com</a>
+                <div class="dropdown-divider"></div>
+                <form action="Validar" method="POST">
+                    <button  name="accion" name="Salir" class="dropdown-item text-center" href="#">Salir</button>
+                </form>            
+            </div>
+            </div>          
+        </nav>
+         
                     <div class="m-4" style="height: 620px; ">
                         <iframe name="myFrame" style="height: 100%; width: 100%; border: none;"></iframe>
                     </div>
