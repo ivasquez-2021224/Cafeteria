@@ -18,6 +18,8 @@ import modelo.Cliente;
 import modelo.ClienteDAO;
 import modelo.Proveedor;
 import modelo.ProveedorDAO;
+import modelo.Ventas;
+import modelo.VentasDAO;
 
 /**
  *
@@ -30,6 +32,9 @@ public class Controlador extends HttpServlet {
     ClienteDAO clienteDAO = new ClienteDAO();
     Proveedor proveedor = new Proveedor();
     ProveedorDAO proveedorDAO = new ProveedorDAO();
+    Ventas ventas = new Ventas();
+    VentasDAO ventasDAO = new VentasDAO();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -119,6 +124,37 @@ public class Controlador extends HttpServlet {
             
             
             request.getRequestDispatcher("Proveedores.jsp").forward(request, response);
+        }else if(menu.equals("Ventas")){
+            switch(accion){
+                case "ListarVentas":
+                    List listaVentas = ventasDAO.listarVentas();
+                    request.setAttribute("ventas", listaVentas);
+                    break;
+                case "AgregarVentas":
+                    String fecha = request.getParameter("txtFecha");
+                    Double monto = (Double.parseDouble(request.getParameter("txtMonto")));
+                    String numSerie = request.getParameter("txtNumeroSerie");
+                    int codCliente = Integer.parseInt(request.getParameter("txtCodigoCliente"));
+                    int codEmpleado = Integer.parseInt(request.getParameter("txtCodigoEmpleado"));
+                    ventas.setFecha(fecha);
+                    ventas.setMonto(monto);
+                    ventas.setNumeroSerie(numSerie);
+                    ventas.setCodigoCliente(codCliente);
+                    ventas.setCodigoEmpleado(codEmpleado);
+                    ventasDAO.agregarVenta(ventas);
+                    request.getRequestDispatcher("Controlador?menu=Ventas&accion=ListarVentas").forward(request, response);
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;
+            }
+            request.getRequestDispatcher("Ventas.jsp").forward(request, response);
         }
     }
 
