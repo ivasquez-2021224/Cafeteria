@@ -1,7 +1,7 @@
-Drop database if exists CafeteriaAntojitos;
-Create database CafeteriaAntojitos;
+Drop database if exists DBCafeteriaAntojitos;
+Create database DBCafeteriaAntojitos;
 
-use CafeteriaAntojitos;
+use DBCafeteriaAntojitos;
 
 Create table Clientes(
 	codigoCliente int not null auto_increment,
