@@ -14,8 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Cargo;
 import modelo.CargoDAO;
+import modelo.Categorias;
+import modelo.CategoriasDAO;
 import modelo.Cliente;
 import modelo.ClienteDAO;
+import modelo.DetalleVenta;
+import modelo.DetalleVentaDAO;
 import modelo.Empleado;
 import modelo.EmpleadoDAO;
 import modelo.Productos;
@@ -45,7 +49,11 @@ public class Controlador extends HttpServlet {
     Productos producto = new Productos();
     ProductosDAO productoDAO = new ProductosDAO();
     Sucursal sucursal = new Sucursal();
-    SucursalDAO sucursalDAO = new SucursalDAO();    
+    SucursalDAO sucursalDAO = new SucursalDAO();   
+    Categorias categorias = new Categorias();
+    CategoriasDAO categoriasDAO = new CategoriasDAO();
+    DetalleVentaDAO detalleDAO = new DetalleVentaDAO();
+    DetalleVenta detalle = new DetalleVenta();
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -251,6 +259,69 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Sucursal.jsp").forward(request, response);
+        }else if(menu.equals("Categorias")){
+            switch(accion){
+                case "ListarCategorias":
+                    List listaCategorias = categoriasDAO.listar();
+                    request.setAttribute("categorias", listaCategorias);
+                    break;
+                case "AgregarCategorias":
+                    String nombreCategoria = request.getParameter("txtNombreCategoria");
+                    String descripcionCategoria = request.getParameter("txtDescripcionCategoria");
+                    categorias.setNombreCategoria(nombreCategoria);
+                    categorias.setDescripcionCategoria(descripcionCategoria);
+                    categoriasDAO.agregar(categorias);
+                    request.getRequestDispatcher("Controlador?menu=Categorias&accion=ListarCategorias").forward(request, response);
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;    
+            }
+            request.getRequestDispatcher("Categorias.jsp").forward(request, response);
+        }else if(menu.equals("DetalleVenta")){
+            
+                       
+            switch(accion){
+                case "ListarDetalle":
+                    List listarDetalle = detalleDAO.listarDetalleVenta();
+                    request.setAttribute("Detalles", listarDetalle);
+                    break;
+                case "AgregarDetalle":
+                       String cantidad = request.getParameter("txtcantidad");
+                        String precio = request.getParameter("txtPrecio");
+                        String codigoProducto = request.getParameter("txtCodProducto");
+                        String codigoVenta = request.getParameter("txtCodVenta");
+                        detalle.setCantidad(Integer.parseInt(cantidad));
+                        detalle.setPrecio(Double.parseDouble(precio));
+                        detalle.setCodigoProducto(Integer.parseInt(codigoProducto));
+                        detalle.setCodigoVenta(Integer.parseInt(codigoVenta));
+                        detalleDAO.agregar(detalle);
+                        request.getRequestDispatcher("Controlador?menu=DetalleVenta&accion=ListarDetalle").forward(request, response);
+                        break;
+                        
+                        
+               
+                case "Editar":
+                        
+                        break;    
+                        
+                case "Actualizar":
+                        
+                        break;
+                        
+                case "Eliminar":
+                        
+                        break;
+            }
+            
+            request.getRequestDispatcher("DetalleVenta.jsp").forward(request, response);
+            
         }
     }
 
