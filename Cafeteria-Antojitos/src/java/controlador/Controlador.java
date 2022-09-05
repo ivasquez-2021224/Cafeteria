@@ -18,6 +18,8 @@ import modelo.Cliente;
 import modelo.ClienteDAO;
 import modelo.Empleado;
 import modelo.EmpleadoDAO;
+import modelo.Productos;
+import modelo.ProductosDAO;
 import modelo.Proveedor;
 import modelo.ProveedorDAO;
 import modelo.Ventas;
@@ -37,7 +39,9 @@ public class Controlador extends HttpServlet {
     Ventas ventas = new Ventas();
     VentasDAO ventasDAO = new VentasDAO();
     EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-    Empleado empleado = new Empleado();    
+    Empleado empleado = new Empleado();
+    Productos producto = new Productos();
+    ProductosDAO productoDAO = new ProductosDAO();    
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -191,6 +195,32 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Empleados.jsp").forward(request, response);
         }else if(menu.equals("Principal")){
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
+        }else if(menu.equals("Productos")){
+            switch(accion){
+                case "ListarProducto":
+                    List listaProductos = productoDAO.listarProducto();
+                    request.setAttribute("Productos", listaProductos);
+                    break;
+                case "AgregarProducto":
+                    String Nombre = request.getParameter("txtNombreProducto");
+                    double Precio = Double.parseDouble(request.getParameter("txtPrecio")); 
+                    int Stock = Integer.parseInt(request.getParameter("txtStock"));
+                    int Marca = Integer.parseInt(request.getParameter("txtCodigoMarca"));
+                    int Categoria = Integer.parseInt(request.getParameter("txtCodigoCategoria"));
+                    producto.setNombreProducto(Nombre);
+                    producto.setPrecio(Precio);
+                    producto.setStock(Stock);
+                    producto.setCodigoMarca(Marca);
+                    producto.setCodigoCategoria(Categoria);
+                    productoDAO.agregar(producto);
+                    request.getRequestDispatcher("Controlador?menu=Productos&accion=ListarProducto").forward(request, response);
+                    
+                    break;
+                   
+            }
+        
+            request.getRequestDispatcher("Productos.jsp").forward(request, response);
+            
         }
     }
 
