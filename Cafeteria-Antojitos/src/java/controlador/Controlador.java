@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Cargo;
 import modelo.CargoDAO;
+import modelo.Empleado;
+import modelo.EmpleadoDAO;
 
 /**
  *
@@ -22,6 +24,9 @@ import modelo.CargoDAO;
 public class Controlador extends HttpServlet {
     Cargo cargo = new Cargo();
     CargoDAO cargoDAO = new CargoDAO();
+    EmpleadoDAO empleadoDAO = new EmpleadoDAO();
+    Empleado empleado = new Empleado();
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -62,9 +67,39 @@ public class Controlador extends HttpServlet {
                         break;
             }
             
-            
-            
             request.getRequestDispatcher("Cargo.jsp").forward(request, response);
+        }else if(menu.equals("Principal")){
+            request.getRequestDispatcher("Principal.jsp").forward(request, response);
+        }else if(menu.equals("Empleados")){
+            switch(accion){
+                case "Listar":
+                    List listaEmpleados = empleadoDAO.listar();
+                    request.setAttribute("empleados", listaEmpleados);
+                    break;
+                case "Agregar":
+                    String  DPI = request.getParameter("txtDPIEmpleado");
+                    String nombres = request.getParameter("txtNombresEmpleado");
+                    String telefono = request.getParameter("txtTelefonoEmpleado");
+                    String user = request.getParameter("txtUsuario");
+                    int codCar = Integer.parseInt(request.getParameter("txtCodigoCargo"));
+                    int codSuc = Integer.parseInt(request.getParameter("txtCodigoSucursal"));
+                    empleado.setDPIEmpleado(DPI);
+                    empleado.setNombresEmpleado(nombres);
+                    empleado.setTelefonoEmpleado(telefono);
+                    empleado.setUsuario(user);
+                    empleado.setCodigoCargo(codCar);
+                    empleado.setCodigoSucursal(codSuc);
+                    empleadoDAO.agregar(empleado);
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=Listar").forward(request, response);
+                    break;
+                case "Editar":
+                    break;
+                case "Actualizar":
+                    break;
+                case "Eliminar":
+                    break;
+            }
+            request.getRequestDispatcher("Empleados.jsp").forward(request, response);
         }
     }
 

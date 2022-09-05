@@ -42,7 +42,7 @@
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Productos" target="myFrame">Productos</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Empleados" target="myFrame">Empleados</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Empleados&accion=Listar" target="myFrame">Empleados</a>
                   </li>
                   <li class="nav-item">
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-light" href="Controlador?menu=Ventas" target="myFrame">Ventas</a>
