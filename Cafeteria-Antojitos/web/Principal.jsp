@@ -33,7 +33,7 @@
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Sucursal" target="myFrame">Sucursal</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Marcas" target="myFrame">Marcas</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning " href="Controlador?menu=Marcas&accion=ListarMarcas" target="myFrame">Marcas</a>
                   </li>
                   <li class="nav-item">
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Productos" target="myFrame">Productos</a>

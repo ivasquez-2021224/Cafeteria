@@ -14,7 +14,7 @@
 
         <title>Detalles De Venta</title>
     </head>
-    <body>
+    <body style="background-color: #b3b3b1;">
        <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
@@ -76,4 +76,5 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </body>
 </html>
+
 
