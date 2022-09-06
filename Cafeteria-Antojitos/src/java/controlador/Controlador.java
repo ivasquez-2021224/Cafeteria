@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Cargo;
 import modelo.CargoDAO;
+import modelo.Categorias;
+import modelo.CategoriasDAO;
 import modelo.Cliente;
 import modelo.ClienteDAO;
 import modelo.Empleado;
@@ -42,6 +44,8 @@ public class Controlador extends HttpServlet {
     Empleado empleado = new Empleado();   
     Marcas marcas = new Marcas();
     MarcasDAO marcasDAO = new MarcasDAO();
+    Categorias categorias = new Categorias();
+    CategoriasDAO categoriasDAO = new CategoriasDAO();
     
     
     /**
@@ -223,6 +227,31 @@ public class Controlador extends HttpServlet {
     
             }
             request.getRequestDispatcher("Marcas.jsp").forward(request, response);
+        }else if(menu.equals("Categorias")){
+            switch(accion){
+                case "ListarCategorias":
+                    List listaCategorias = categoriasDAO.listar();
+                    request.setAttribute("categorias", listaCategorias);
+                    break;
+                case "AgregarCategorias":
+                    String nombreCategoria = request.getParameter("txtNombreCategoria");
+                    String descripcionCategoria = request.getParameter("txtDescripcionCategoria");
+                    categorias.setNombreCategoria(nombreCategoria);
+                    categorias.setDescripcionCategoria(descripcionCategoria);
+                    categoriasDAO.agregar(categorias);
+                    request.getRequestDispatcher("Controlador?menu=Categorias&accion=ListarCategorias").forward(request, response);
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;    
+            }
+            request.getRequestDispatcher("Categorias.jsp").forward(request, response);
         }
     }
 
