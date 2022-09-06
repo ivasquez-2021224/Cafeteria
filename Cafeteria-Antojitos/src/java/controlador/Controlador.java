@@ -20,6 +20,8 @@ import modelo.Cliente;
 import modelo.ClienteDAO;
 import modelo.Empleado;
 import modelo.EmpleadoDAO;
+import modelo.Marcas;
+import modelo.MarcasDAO;
 import modelo.Proveedor;
 import modelo.ProveedorDAO;
 import modelo.Ventas;
@@ -39,9 +41,12 @@ public class Controlador extends HttpServlet {
     Ventas ventas = new Ventas();
     VentasDAO ventasDAO = new VentasDAO();
     EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-    Empleado empleado = new Empleado();    
+    Empleado empleado = new Empleado();   
+    Marcas marcas = new Marcas();
+    MarcasDAO marcasDAO = new MarcasDAO();
     Categorias categorias = new Categorias();
     CategoriasDAO categoriasDAO = new CategoriasDAO();
+    
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -195,6 +200,33 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Empleados.jsp").forward(request, response);
         }else if(menu.equals("Principal")){
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
+        }else if(menu.equals("Marcas")){
+            switch(accion){
+                
+                case "Listar":
+                    List ListaMarca = marcasDAO.listar();
+                    request.setAttribute("marcas", ListaMarca);
+                    break;
+                
+                case "Agregar":
+                    String Nombre = request.getParameter("txtNombreMarcas");
+                    String codProveedor = request.getParameter("txtCodigoProveedor");
+                    marcas.setNombreMarca("Nombre");
+                    marcas.setCodigoProveedor("codProveedor");
+                    marcasDAO.agregar(marcas);
+                    request.getRequestDispatcher("Controlador?menu=Marcas&accion=ListarMarcas").forward(request, response);
+                    
+                    break;
+                case "Editar":
+                    break;
+                case "Actualizar":
+                    break;
+                case "Eliminar":
+                    break;
+                                   
+    
+            }
+            request.getRequestDispatcher("Marcas.jsp").forward(request, response);
         }else if(menu.equals("Categorias")){
             switch(accion){
                 case "ListarCategorias":
