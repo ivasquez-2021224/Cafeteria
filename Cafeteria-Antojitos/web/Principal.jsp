@@ -24,7 +24,7 @@
                     <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Clientes&accion=ListarCliente" target="myFrame">Clientes</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Categorias&accion=ListarCategorias" target="myFrame">Categorias</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Categorias" target="myFrame">Categorias</a>
                   </li>
                   <li class="nav-item">
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Cargo&accion=ListarCargo" target="myFrame">Cargo</a>
@@ -33,7 +33,7 @@
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Sucursal" target="myFrame">Sucursal</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning " href="Controlador?menu=Marcas&accion=ListarMarcas" target="myFrame">Marcas</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Marcas&accion=ListarMarcas" target="myFrame">Marcas</a>
                   </li>
                   <li class="nav-item">
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Productos" target="myFrame">Productos</a>

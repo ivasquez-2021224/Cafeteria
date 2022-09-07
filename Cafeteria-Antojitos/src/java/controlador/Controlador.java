@@ -14,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Cargo;
 import modelo.CargoDAO;
-import modelo.Categorias;
-import modelo.CategoriasDAO;
 import modelo.Cliente;
 import modelo.ClienteDAO;
 import modelo.Empleado;
@@ -44,8 +42,6 @@ public class Controlador extends HttpServlet {
     Empleado empleado = new Empleado();   
     Marcas marcas = new Marcas();
     MarcasDAO marcasDAO = new MarcasDAO();
-    Categorias categorias = new Categorias();
-    CategoriasDAO categoriasDAO = new CategoriasDAO();
     
     
     /**
@@ -200,22 +196,23 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Empleados.jsp").forward(request, response);
         }else if(menu.equals("Principal")){
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
-        }else if(menu.equals("Marcas")){
-            switch(accion){
-                
-                case "Listar":
-                    List ListaMarca = marcasDAO.listar();
-                    request.setAttribute("marcas", ListaMarca);
+        } else if (menu.equals("Marcas")) {
+            switch (accion) {
+
+                case "ListarMarcas":
+                    List listaMarca = marcasDAO.listarMarcas();
+                    request.setAttribute("marcas", listaMarca);
                     break;
-                
+
                 case "Agregar":
-                    String Nombre = request.getParameter("txtNombreMarcas");
-                    String codProveedor = request.getParameter("txtCodigoProveedor");
-                    marcas.setNombreMarca("Nombre");
-                    marcas.setCodigoProveedor("codProveedor");
-                    marcasDAO.agregar(marcas);
+                    String nombre = request.getParameter("txtNombresMarca");
+                    int codProveedor = Integer.parseInt(request.getParameter("txtCodigoProveedor"));
+                    marcas.setNombreMarca(nombre);
+                    marcas.setCodigoProveedor(codProveedor);
+                    marcasDAO.agregarMarcas(marcas);
                     request.getRequestDispatcher("Controlador?menu=Marcas&accion=ListarMarcas").forward(request, response);
                     
+
                     break;
                 case "Editar":
                     break;
@@ -223,35 +220,9 @@ public class Controlador extends HttpServlet {
                     break;
                 case "Eliminar":
                     break;
-                                   
-    
+
             }
             request.getRequestDispatcher("Marcas.jsp").forward(request, response);
-        }else if(menu.equals("Categorias")){
-            switch(accion){
-                case "ListarCategorias":
-                    List listaCategorias = categoriasDAO.listar();
-                    request.setAttribute("categorias", listaCategorias);
-                    break;
-                case "AgregarCategorias":
-                    String nombreCategoria = request.getParameter("txtNombreCategoria");
-                    String descripcionCategoria = request.getParameter("txtDescripcionCategoria");
-                    categorias.setNombreCategoria(nombreCategoria);
-                    categorias.setDescripcionCategoria(descripcionCategoria);
-                    categoriasDAO.agregar(categorias);
-                    request.getRequestDispatcher("Controlador?menu=Categorias&accion=ListarCategorias").forward(request, response);
-                    break;
-                case "Editar":
-                    
-                    break;
-                case "Actualizar":
-                    
-                    break;
-                case "Eliminar":
-                    
-                    break;    
-            }
-            request.getRequestDispatcher("Categorias.jsp").forward(request, response);
         }
     }
 
