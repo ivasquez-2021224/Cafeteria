@@ -204,22 +204,23 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Empleados.jsp").forward(request, response);
         }else if(menu.equals("Principal")){
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
-        }else if(menu.equals("Marcas")){
-            switch(accion){
-                
-                case "Listar":
-                    List ListaMarca = marcasDAO.listar();
-                    request.setAttribute("marcas", ListaMarca);
+        } else if (menu.equals("Marcas")) {
+            switch (accion) {
+
+                case "ListarMarcas":
+                    List listaMarca = marcasDAO.listarMarcas();
+                    request.setAttribute("marcas", listaMarca);
                     break;
-                
+
                 case "Agregar":
-                    String Nombre = request.getParameter("txtNombreMarcas");
-                    String codProveedor = request.getParameter("txtCodigoProveedor");
-                    marcas.setNombreMarca("Nombre");
-                    marcas.setCodigoProveedor("codProveedor");
-                    marcasDAO.agregar(marcas);
+                    String nombre = request.getParameter("txtNombresMarca");
+                    int codProveedor = Integer.parseInt(request.getParameter("txtCodigoProveedor"));
+                    marcas.setNombreMarca(nombre);
+                    marcas.setCodigoProveedor(codProveedor);
+                    marcasDAO.agregarMarcas(marcas);
                     request.getRequestDispatcher("Controlador?menu=Marcas&accion=ListarMarcas").forward(request, response);
                     
+
                     break;
                 case "Editar":
                     break;
@@ -227,8 +228,7 @@ public class Controlador extends HttpServlet {
                     break;
                 case "Eliminar":
                     break;
-                                   
-    
+
             }
             request.getRequestDispatcher("Marcas.jsp").forward(request, response);
         }else if(menu.equals("Categorias")){
@@ -295,6 +295,7 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("DetalleVenta.jsp").forward(request, response);
             
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
