@@ -41,8 +41,8 @@ Create table Membresia(
 Create table Clientes(
 	codigoCliente int not null auto_increment,
     DPICliente varchar(13) not null,
-    nombresCliente varchar(200) not null,
-    apellidosCliente varchar(200) not null,
+    nombreCliente varchar(200) not null,
+    apellidoCliente varchar(200) not null,
     direccionCliente varchar(150) not null,
     telefonoCliente varchar(10) not null,
     codigoMembresia int not null,
@@ -77,8 +77,8 @@ Create table Productos(
 Create table Empleados(
 	codigoEmpleado int not null auto_increment,
     DPIEmpleado varchar(13) not null,
-    nombresEmpleado varchar(200) not null,
-    apellidosEmpleado varchar(200) not null,
+    nombreEmpleado varchar(200) not null,
+    apellidoEmpleado varchar(200) not null,
     telefonoEmpleado varchar(10) not null,
     usuario varchar(100) not null,
     codigoCargo int not null,
