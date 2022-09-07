@@ -14,7 +14,7 @@
 
         <title></title>
     </head>
-    <body>
+    <body style="background-color: #b3b3b1;">
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
@@ -24,9 +24,13 @@
                             <input type="text" name="txtDPIEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Nombres:</label>
-                            <input type="text" name="txtNombresEmpleado" class="form-control">
+                            <label>Nombre:</label>
+                            <input type="text" name="txtNombreEmpleado" class="form-control">
                         </div>
+                        <div class="form-group">
+                            <label>Apellido:</label>
+                            <input type="text" name="txtApellidoEmpleado" class="form-control">
+                        </div>                         
                         <div class="form-group">
                             <label>Telefono;</label>
                             <input type="text" name="txtTelefonoEmpleado" class="form-control">
@@ -55,6 +59,7 @@
                             <td>CODIGO</td>
                             <td>DPI</td>
                             <td>NOMBRES</td>
+                            <td>APELLIDO</td>
                             <td>TELEFONO</td>
                             <td>USUARIO</td>
                             <td>CODIGO CARGO</td>
@@ -66,7 +71,8 @@
                         <tr>
                             <td>${empleado.getCodigoEmpleado()}</td>
                             <td>${empleado.getDPIEmpleado()}</td>
-                            <td>${empleado.getNombresEmpleado()}</td>
+                            <td>${empleado.getNombreEmpleado()}</td>
+                            <td>${empleado.getApellidoEmpleado()}</td>
                             <td>${empleado.getTelefonoEmpleado()}</td>
                             <td>${empleado.getUsuario()}</td>
                             <td>${empleado.getCodigoCargo()}</td>
