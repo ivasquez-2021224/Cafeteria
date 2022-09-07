@@ -27,9 +27,11 @@ public class ClienteDAO {
                 Cliente cliente = new Cliente();
                 cliente.setCodigoCliente(rs.getInt(1));
                 cliente.setDPICliente(rs.getString(2));
-                cliente.setNombresCliente(rs.getString(3));
-                cliente.setDireccionCliente(rs.getString(4));
-                cliente.setTelefonoCliente(rs.getString(5));
+                cliente.setNombreCliente(rs.getString(3));
+                cliente.setApellidoCliente(rs.getString(4));
+                cliente.setDireccionCliente(rs.getString(5));
+                cliente.setTelefonoCliente(rs.getString(6));
+                cliente.setCodigoMembresia(rs.getInt(7));
                 listaCliente.add(cliente);
             }
         } catch (Exception e) {
@@ -42,14 +44,16 @@ public class ClienteDAO {
 
     //METODO PARA AGREGAR CLIENTES
     public int agregarCliente(Cliente cliente) {
-        String sql = "insert into Clientes(DPICliente, nombresCliente, direccionCliente, telefonoCliente) values (?,?,?,?)";
+        String sql = "insert into Clientes(DPICliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, codigoMembresia) values (?,?,?,?,?,?)";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, cliente.getDPICliente());
-            ps.setString(2, cliente.getNombresCliente());
-            ps.setString(3, cliente.getDireccionCliente());
-            ps.setString(4, cliente.getTelefonoCliente());
+            ps.setString(2, cliente.getNombreCliente());
+            ps.setString(3, cliente.getApellidoCliente());
+            ps.setString(4, cliente.getDireccionCliente());
+            ps.setString(5, cliente.getTelefonoCliente());
+            ps.setInt(6, cliente.getCodigoMembresia());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -68,9 +72,11 @@ public class ClienteDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 cliente.setDPICliente(rs.getString(2));
-                cliente.setNombresCliente(rs.getString(3));
-                cliente.setDireccionCliente(rs.getString(4));
-                cliente.setTelefonoCliente(rs.getString(5));
+                cliente.setNombreCliente(rs.getString(3));
+                cliente.setApellidoCliente(rs.getString(4));
+                cliente.setDireccionCliente(rs.getString(5));
+                cliente.setTelefonoCliente(rs.getString(6));
+                cliente.setCodigoMembresia(rs.getInt(7));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -82,14 +88,16 @@ public class ClienteDAO {
     
     //Metodo para actualizar clientes
     public int actualizarCliente(Cliente cliente){
-        String sql = "Update Cliente  set DPICliente=?, nombresCliente=?, direccionCliente=?, telefonoCliente=? where codigoCliente=?";
+        String sql = "Update Cliente  set DPICliente=?, nombreCliente=?, apellidoCliente=?, direccionCliente=?, telefonoCliente=?, codigoMembresia=? where codigoCliente=?";
         try{
             con=cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, cliente.getDPICliente());
-            ps.setString(2, cliente.getNombresCliente());
-            ps.setString(3, cliente.getDireccionCliente());
-            ps.setString(4, cliente.getTelefonoCliente());
+            ps.setString(2, cliente.getNombreCliente());
+            ps.setString(3, cliente.getApellidoCliente());
+            ps.setString(4, cliente.getDireccionCliente());
+            ps.setString(5, cliente.getTelefonoCliente());
+            ps.setInt(6, cliente.getCodigoMembresia());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
