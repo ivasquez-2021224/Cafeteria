@@ -169,29 +169,29 @@ insert into Sucursal (nombreSucursal, direccion)
     
 select * from Sucursal;
 
-insert into Membresia (codigoMembresia, tipoMembresia, descripcionMembresia)
-	value ('01', 'Oro', 'Te da el 50% de descuento en las compras');
-insert into Membresia (codigoMembresia, tipoMembresia, descripcionMembresia)
-	value ('02', 'Plata', 'Te da el 25% de descuento en las compras');
-insert into Membresia (codigoMembresia, tipoMembresia, descripcionMembresia)
-	value ('03', 'Bronce', 'Te da el 10% de descuento en las compras');
-insert into Membresia (codigoMembresia, tipoMembresia, descripcionMembresia)
-	value ('04', 'Platinium', 'Te da el 75% de descuento en las compras');
-insert into Membresia (codigoMembresia, tipoMembresia, descripcionMembresia)
-	value ('05', 'Normal', 'Te da pts los que podes canjear un postre gratis');
+insert into Membresia (tipoMembresia, descripcionMembresia)
+	value ('Oro', 'Te da el 50% de descuento en las compras');
+insert into Membresia (tipoMembresia, descripcionMembresia)
+	value ('Plata', 'Te da el 25% de descuento en las compras');
+insert into Membresia (tipoMembresia, descripcionMembresia)
+	value ('Bronce', 'Te da el 10% de descuento en las compras');
+insert into Membresia (tipoMembresia, descripcionMembresia)
+	value ('Platinium', 'Te da el 75% de descuento en las compras');
+insert into Membresia (tipoMembresia, descripcionMembresia)
+	value ('Normal', 'Te da pts los que podes canjear un postre gratis');
     
 select * from Membresia;
 
 insert into Clientes (DPICliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, codigoMembresia) 
-	values ('5854758589523', 'Pedro', 'Armas', '3ra av 11-05 zona 4 Guatemala', '85787896', '01');
+	values ('5854758589523', 'Pedro', 'Armas', '3ra av 11-05 zona 4 Guatemala', '85787896', '1');
 insert into Clientes (DPICliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, codigoMembresia)
-	values ('8547574858565', 'Alexander' , 'Alessandro', '5ta av 12-10 zona 14 Guatemala', '85685475', '02');
+	values ('8547574858565', 'Alexander' , 'Alessandro', '5ta av 12-10 zona 14 Guatemala', '85685475', '2');
 insert into Clientes (DPICliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, codigoMembresia)
-	values ('5857856896585', 'Pablo', 'Diaz', '7ma av 18-02 zona 6 Tecpan', '58965845', '03');
+	values ('5857856896585', 'Pablo', 'Diaz', '7ma av 18-02 zona 6 Tecpan', '58965845', '3');
 insert into Clientes (DPICliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, codigoMembresia)
-	values ('2547858965856', 'Estuardo',  'Gomez', '2da av 20-45 zona 2 Amatitlan', '54214585', '04');
+	values ('2547858965856', 'Estuardo',  'Gomez', '2da av 20-45 zona 2 Amatitlan', '54214585', '4');
 insert into Clientes (DPICliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, codigoMembresia)
-	values ('5232415214520', 'Antonio', 'Garcia', '4ta av 15-20 zona 5Villanueva', '85696325', '05');
+	values ('5232415214520', 'Antonio', 'Garcia', '4ta av 15-20 zona 5Villanueva', '85696325', '5');
 
 select * from Clientes;
 
