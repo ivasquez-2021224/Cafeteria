@@ -24,6 +24,8 @@ import modelo.Empleado;
 import modelo.EmpleadoDAO;
 import modelo.Marcas;
 import modelo.MarcasDAO;
+import modelo.Membresia;
+import modelo.MembresiaDAO;
 import modelo.Productos;
 import modelo.ProductosDAO;
 import modelo.Proveedor;
@@ -59,6 +61,8 @@ public class Controlador extends HttpServlet {
     ProductosDAO productoDAO = new ProductosDAO();
     Sucursal sucursal = new Sucursal();
     SucursalDAO sucursalDAO = new SucursalDAO();
+    Membresia membresia = new Membresia();
+    MembresiaDAO membresiaDAO = new MembresiaDAO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -355,6 +359,32 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Sucursal.jsp").forward(request, response);
+            
+        }else if(menu.equals("Membresia")){
+            switch(accion){
+                case "ListarMembresia":
+                    List listaMembresia = membresiaDAO.listarMembresia();
+                    request.setAttribute("membresias", listaMembresia);
+                    break;
+                case "AgregarMembresia":
+                    String tipoMembresia = request.getParameter("txtTipoMembresia");
+                    String descripcionMembresia = request.getParameter("txtDescripcionMembresia");
+                    membresia.setTipoMembresia(tipoMembresia);
+                    membresia.setDescripcionMembresia(descripcionMembresia);
+                    membresiaDAO.agregarMembresia(membresia);
+                    request.getRequestDispatcher("Controlador?menu=Membresia&accion=ListarMembresia").forward(request, response);
+                    break;
+                case "Editar":
+
+                    break;
+                case "Actualizar":
+
+                    break;
+                case "Eliminar":
+
+                    break;
+            }
+            request.getRequestDispatcher("Membresia.jsp").forward(request, response);
         }
 
     }
