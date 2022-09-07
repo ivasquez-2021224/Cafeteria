@@ -3,15 +3,6 @@ Create database DBCafeteriaAntojitos;
 
 use DBCafeteriaAntojitos;
 
-Create table Clientes(
-	codigoCliente int not null auto_increment,
-    DPICliente varchar(13) not null,
-    nombresCliente varchar(200) not null,
-    direccionCliente varchar(150) not null,
-    telefonoCliente varchar(10) not null,
-    primary key PK_codigoCliente (codigoCliente)
-);
-
 Create table Categorias(
 	codigoCategoria int not null auto_increment,
     nombreCategoria varchar(150) not null,
@@ -21,7 +12,7 @@ Create table Categorias(
 
 Create table Proveedores(
 	codigoProveedor int not null auto_increment,
-    nombresProveedor varchar(150) not null,
+    nombreProveedor varchar(150) not null,
     direccion varchar(150) not null,
     telefono varchar(10) not null,
     primary key PK_codigoProveedor (codigoProveedor)
@@ -40,9 +31,29 @@ Create table Sucursal(
     primary key PK_codigoSucursal (codigoSucursal)
 );
 
+Create table Membresia(
+	codigoMembresia int not null auto_increment,
+    tipoMembresia varchar(50) not null,
+    descripcionMembresia varchar(250) not null,
+    primary key PK_codigoMembresia (codigoMembresia)
+);
+
+Create table Clientes(
+	codigoCliente int not null auto_increment,
+    DPICliente varchar(13) not null,
+    nombresCliente varchar(200) not null,
+    apellidosCliente varchar(200) not null,
+    direccionCliente varchar(150) not null,
+    telefonoCliente varchar(10) not null,
+    codigoMembresia int not null,
+    primary key PK_codigoCliente (codigoCliente),
+	constraint FK_Clientes_Membresia foreign key (codigoMembresia)
+		references Membresia(codigoMembresia)   
+);
+
 Create table Marcas(
 	codigoMarca int not null auto_increment,
-    nombreMarca varchar(200),
+    nombreMarca varchar(200) not null,
     codigoProveedor int not null,
     primary key PK_codigoMarca (codigoMarca),
 	constraint FK_Marcas_Proveedores foreign key (codigoProveedor)
@@ -67,8 +78,9 @@ Create table Empleados(
 	codigoEmpleado int not null auto_increment,
     DPIEmpleado varchar(13) not null,
     nombresEmpleado varchar(200) not null,
+    apellidosEmpleado varchar(200) not null,
     telefonoEmpleado varchar(10) not null,
-    usuario varchar(100),
+    usuario varchar(100) not null,
     codigoCargo int not null,
     codigoSucursal int not null,
     primary key PK_codigoEmpleado (codigoEmpleado),
@@ -82,7 +94,7 @@ Create table Ventas(
 	codigoVenta int not null auto_increment,
     fecha varchar(10) not null,
     monto double not null,
-    numeroSerie varchar(15),
+    numeroSerie varchar(15) not null,
     codigoCliente int not null,
     codigoEmpleado int not null,
     primary key PK_codigoVenta (codigoVenta),
@@ -105,19 +117,6 @@ Create table DetalleVenta(
 		references Ventas(codigoVenta)
 );
 
-insert into Clientes (DPICliente, nombresCliente, direccionCliente, telefonoCliente) 
-	values ('5854758589523', 'Pedro Armas', '3ra av 11-05 zona 4 Guatemala', '85787896');
-insert into Clientes (DPICliente, nombresCliente, direccionCliente, telefonoCliente) 
-	values ('8547574858565', 'Alexander Alessandro', '5ta av 12-10 zona 14 Guatemala', '85685475');
-insert into Clientes (DPICliente, nombresCliente, direccionCliente, telefonoCliente) 
-	values ('5857856896585', 'Pablo Diaz', '7ma av 18-02 zona 6 Tecpan', '58965845');
-insert into Clientes (DPICliente, nombresCliente, direccionCliente, telefonoCliente) 
-	values ('2547858965856', 'Estuardo Gomez', '2da av 20-45 zona 2 Amatitlan', '54214585');
-insert into Clientes (DPICliente, nombresCliente, direccionCliente, telefonoCliente) 
-	values ('5232415214520', 'Antonio Garcia', '4ta av 15-20 zona 5Villanueva', '85696325');
-
-select * from Clientes;
-
 insert into Categorias (nombreCategoria, descripcionCategoria) 
 	values ('Desayunos', 'Huevos con Frijoles acompañado de Platanos con crema y Tocino.');
 insert into Categorias (nombreCategoria, descripcionCategoria) 
@@ -131,15 +130,15 @@ insert into Categorias (nombreCategoria, descripcionCategoria)
     
 select * from Categorias;
     
-insert into Proveedores (nombresProveedor, direccion, telefono) 
+insert into Proveedores (nombreProveedor, direccion, telefono) 
 	values ('Sarita', '30av 9-90 zona 12 Pamplona Guatemala', '54534354');
-insert into Proveedores (nombresProveedor, direccion, telefono) 
+insert into Proveedores (nombreProveedor, direccion, telefono) 
 	values ('Cocacola', 'Zona 7 col landivar Guatemala', '65879547');
-insert into Proveedores (nombresProveedor, direccion, telefono) 
+insert into Proveedores (nombreProveedor, direccion, telefono) 
 	values ('Granja Azul', 'Camino Aldea Las Trojes, Amatitlán', '85475412');
-insert into Proveedores (nombresProveedor, direccion, telefono) 
+insert into Proveedores (nombreProveedor, direccion, telefono) 
 	values ('Patsy', 'Av la Reforma 2da calle Guatemala', '85689854');
-insert into Proveedores (nombresProveedor, direccion, telefono) 
+insert into Proveedores (nombreProveedor, direccion, telefono) 
 	values ('Starbucks', 'Zona 9 Guatemala', '45878547');
     
 select * from Proveedores;
@@ -170,6 +169,32 @@ insert into Sucursal (nombreSucursal, direccion)
     
 select * from Sucursal;
 
+insert into Membresia (codigoMembresia, tipoMembresia, descripcionMembresia)
+	value ('01', 'Oro', 'Te da el 50% de descuento en las compras');
+insert into Membresia (codigoMembresia, tipoMembresia, descripcionMembresia)
+	value ('02', 'Plata', 'Te da el 25% de descuento en las compras');
+insert into Membresia (codigoMembresia, tipoMembresia, descripcionMembresia)
+	value ('03', 'Bronce', 'Te da el 10% de descuento en las compras');
+insert into Membresia (codigoMembresia, tipoMembresia, descripcionMembresia)
+	value ('04', 'Platinium', 'Te da el 75% de descuento en las compras');
+insert into Membresia (codigoMembresia, tipoMembresia, descripcionMembresia)
+	value ('05', 'Normal', 'Te da pts los que podes canjear un postre gratis');
+    
+select * from Membresia;
+
+insert into Clientes (DPICliente, nombresCliente, apellidosCliente, direccionCliente, telefonoCliente, codigoMembresia) 
+	values ('5854758589523', 'Pedro', 'Armas', '3ra av 11-05 zona 4 Guatemala', '85787896', '01');
+insert into Clientes (DPICliente, nombresCliente, apellidosCliente, direccionCliente, telefonoCliente, codigoMembresia)
+	values ('8547574858565', 'Alexander' , 'Alessandro', '5ta av 12-10 zona 14 Guatemala', '85685475', '02');
+insert into Clientes (DPICliente, nombresCliente, apellidosCliente, direccionCliente, telefonoCliente, codigoMembresia)
+	values ('5857856896585', 'Pablo', 'Diaz', '7ma av 18-02 zona 6 Tecpan', '58965845', '03');
+insert into Clientes (DPICliente, nombresCliente, apellidosCliente, direccionCliente, telefonoCliente, codigoMembresia)
+	values ('2547858965856', 'Estuardo',  'Gomez', '2da av 20-45 zona 2 Amatitlan', '54214585', '04');
+insert into Clientes (DPICliente, nombresCliente, apellidosCliente, direccionCliente, telefonoCliente, codigoMembresia)
+	values ('5232415214520', 'Antonio', 'Garcia', '4ta av 15-20 zona 5Villanueva', '85696325', '05');
+
+select * from Clientes;
+
 insert into Marcas (nombreMarca, codigoProveedor) 
 	values ('Pops', '1');
 insert into Marcas (nombreMarca, codigoProveedor) 
@@ -196,16 +221,16 @@ insert into Productos (nombreProducto, precio, stock, codigoMarca, codigoCategor
     
 select * from Productos;
 
-insert into Empleados (DPIEmpleado, nombresEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
-	values ('2547856589589', 'Angel Villanueva', '54747858', 'avillanueva', '1', '1');
-insert into Empleados (DPIEmpleado, nombresEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
-	values ('5889658568965', 'Patrick Villatoro', '58547478', 'pvillatoro', '2', '2');
-insert into Empleados (DPIEmpleado, nombresEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
-	values ('4585896589658', 'Marcelino vasquez', '54747859', 'mvasquez', '3', '3');
-insert into Empleados (DPIEmpleado, nombresEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
-	values ('1254785545856', 'Eduardo Salazar', '54789652', 'dsalazar', '4', '4');
-insert into Empleados (DPIEmpleado, nombresEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
-	values ('3256589658658', 'Allan Xiquin', '45748547', 'axiquin', '5', '5');
+insert into Empleados (DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+	values ('2547856589589', 'Angel' , 'Villanueva', '54747858', 'avillanueva', '1', '1');
+insert into Empleados (DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+	values ('5889658568965', 'Patrick', 'Villatoro', '58547478', 'pvillatoro', '2', '2');
+insert into Empleados (DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+	values ('4585896589658', 'Marcelino', 'vasquez', '54747859', 'mvasquez', '3', '3');
+insert into Empleados (DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+	values ('1254785545856', 'Eduardo', 'Salazar', '54789652', 'dsalazar', '4', '4');
+insert into Empleados (DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+	values ('3256589658658', 'Allan', 'Xiquin', '45748547', 'axiquin', '5', '5');
     
 select * from Empleados;
     
