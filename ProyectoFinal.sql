@@ -182,15 +182,15 @@ insert into Membresia (codigoMembresia, tipoMembresia, descripcionMembresia)
     
 select * from Membresia;
 
-insert into Clientes (DPICliente, nombresCliente, apellidosCliente, direccionCliente, telefonoCliente, codigoMembresia) 
+insert into Clientes (DPICliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, codigoMembresia) 
 	values ('5854758589523', 'Pedro', 'Armas', '3ra av 11-05 zona 4 Guatemala', '85787896', '01');
-insert into Clientes (DPICliente, nombresCliente, apellidosCliente, direccionCliente, telefonoCliente, codigoMembresia)
+insert into Clientes (DPICliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, codigoMembresia)
 	values ('8547574858565', 'Alexander' , 'Alessandro', '5ta av 12-10 zona 14 Guatemala', '85685475', '02');
-insert into Clientes (DPICliente, nombresCliente, apellidosCliente, direccionCliente, telefonoCliente, codigoMembresia)
+insert into Clientes (DPICliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, codigoMembresia)
 	values ('5857856896585', 'Pablo', 'Diaz', '7ma av 18-02 zona 6 Tecpan', '58965845', '03');
-insert into Clientes (DPICliente, nombresCliente, apellidosCliente, direccionCliente, telefonoCliente, codigoMembresia)
+insert into Clientes (DPICliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, codigoMembresia)
 	values ('2547858965856', 'Estuardo',  'Gomez', '2da av 20-45 zona 2 Amatitlan', '54214585', '04');
-insert into Clientes (DPICliente, nombresCliente, apellidosCliente, direccionCliente, telefonoCliente, codigoMembresia)
+insert into Clientes (DPICliente, nombreCliente, apellidoCliente, direccionCliente, telefonoCliente, codigoMembresia)
 	values ('5232415214520', 'Antonio', 'Garcia', '4ta av 15-20 zona 5Villanueva', '85696325', '05');
 
 select * from Clientes;
@@ -221,15 +221,15 @@ insert into Productos (nombreProducto, precio, stock, codigoMarca, codigoCategor
     
 select * from Productos;
 
-insert into Empleados (DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
 	values ('2547856589589', 'Angel' , 'Villanueva', '54747858', 'avillanueva', '1', '1');
-insert into Empleados (DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
 	values ('5889658568965', 'Patrick', 'Villatoro', '58547478', 'pvillatoro', '2', '2');
-insert into Empleados (DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
 	values ('4585896589658', 'Marcelino', 'vasquez', '54747859', 'mvasquez', '3', '3');
-insert into Empleados (DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
 	values ('1254785545856', 'Eduardo', 'Salazar', '54789652', 'dsalazar', '4', '4');
-insert into Empleados (DPIEmpleado, nombresEmpleado, apellidosEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
 	values ('3256589658658', 'Allan', 'Xiquin', '45748547', 'axiquin', '5', '5');
     
 select * from Empleados;
