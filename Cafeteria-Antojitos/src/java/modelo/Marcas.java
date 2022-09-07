@@ -5,12 +5,12 @@ package modelo;
 public class Marcas {
     private int codigoMarca;
     private String nombreMarca;
-    private String codigoProveedor;
+    private int codigoProveedor;
 
     public Marcas() {
     }
 
-    public Marcas(int codigoMarca, String nombreMarca, String codigoProveedor) {
+    public Marcas(int codigoMarca, String nombreMarca, int codigoProveedor) {
         this.codigoMarca = codigoMarca;
         this.nombreMarca = nombreMarca;
         this.codigoProveedor = codigoProveedor;
@@ -32,13 +32,12 @@ public class Marcas {
         this.nombreMarca = nombreMarca;
     }
 
-    public String getCodigoProveedor() {
+    public int getCodigoProveedor() {
         return codigoProveedor;
     }
 
-    public void setCodigoProveedor(String codigoProveedor) {
+    public void setCodigoProveedor(int codigoProveedor) {
         this.codigoProveedor = codigoProveedor;
     }
-    
     
 }
