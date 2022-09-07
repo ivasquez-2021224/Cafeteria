@@ -18,6 +18,7 @@
             <div class="card col-sm-5">
                 <div class="card-body">
                     <form action="Controlador?menu=Cargo" method="POST">
+                        <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Cargos</h1>
                         <div class="form-group">
                             <label>TIPO DE CARGO:</label>
                             <input type="text" name="txtTipoCargo" class="form-control">

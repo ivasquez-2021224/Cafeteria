@@ -19,6 +19,7 @@
             <div class="card col-sm-4">
                 <div class="card-body">
                     <form action="Controlador?menu=DetalleVenta" method="POST">
+                        <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Detalle de Ventas</h1>
                         <div class="form-group">
                             <lable>CANTIDAD</lable>
                             <input type="text" name="txtcantidad" class="form-control">

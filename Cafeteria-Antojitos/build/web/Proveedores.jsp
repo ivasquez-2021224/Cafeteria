@@ -18,12 +18,13 @@
             <div class="card col-lg-4"> 
                 <div class="card-body">
                     <form action="Controlador?menu=Proveedores" method="POST">
+                        <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Proveedores</h1>
                         <div class="form-group">
                             <label>Nombres:</label>
                             <input type="text" name="txtNombresProveedor" class="form-control">
-                            <label>DIRECCION:</label>
+                            <label>Dirección:</label>
                             <input type="text" name="txtDireccionProveedor" class="form-control">
-                            <label>TELEFONO:</label>
+                            <label>Teléfono:</label>
                             <input type="text" name="txtTelefonoProveedor" class="form-control">
                         </div>
                         <label>ACCIONES</label>

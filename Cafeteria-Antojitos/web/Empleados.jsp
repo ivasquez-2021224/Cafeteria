@@ -19,6 +19,7 @@
             <div class="card col-sm-4">
                 <div class="card-body">
                     <form action="Controlador?menu=Empleados" method="POST">
+                        <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Empleados</h1>
                         <div class="form-group">
                             <label>DPI:</label>
                             <input type="text" name="txtDPIEmpleado" class="form-control">

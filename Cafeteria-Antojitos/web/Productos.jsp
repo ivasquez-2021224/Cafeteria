@@ -18,9 +18,9 @@
             <div class="card col-lg-4">
                 <div class="card-body">
                     <form action="Controlador?menu=Productos" method="POST">
-                       
+                       <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Productos</h1>
                         <div class="form-group">
-                            <label>NombresProducto:</label>
+                            <label>Nombre Producto:</label>
                             <input type="text" name="txtNombreProducto" class="form-control">
                          </div> 
                         <div class="form-group">
@@ -31,11 +31,11 @@
                             <label>Stock:</label>
                             <input type="text" name="txtStock" class="form-control">
                          </div>   <div class="form-group">
-                            <label>CodigoMarca:</label>
+                            <label>Codigo Marca:</label>
                             <input type="text" name="txtCodigoMarca" class="form-control">
                          </div>  
                          <div class="form-group">
-                            <label>CodigoCategoria:</label>
+                            <label>Codigo Categoria:</label>
                             <input type="text" name="txtCodigoCategoria" class="form-control">
                          </div>
                          <input type="submit" name="accion" value="AgregarProducto" class="btn btn-info">

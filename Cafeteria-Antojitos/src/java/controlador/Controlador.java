@@ -38,6 +38,7 @@ import modelo.VentasDAO;
  * @author izumi
  */
 public class Controlador extends HttpServlet {
+
     Cargo cargo = new Cargo();
     CargoDAO cargoDAO = new CargoDAO();
     Cliente cliente = new Cliente();
@@ -47,19 +48,18 @@ public class Controlador extends HttpServlet {
     Ventas ventas = new Ventas();
     VentasDAO ventasDAO = new VentasDAO();
     EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-    Empleado empleado = new Empleado();   
+    Empleado empleado = new Empleado();
     Marcas marcas = new Marcas();
     MarcasDAO marcasDAO = new MarcasDAO();
     Categorias categorias = new Categorias();
     CategoriasDAO categoriasDAO = new CategoriasDAO();
     DetalleVentaDAO detalleDAO = new DetalleVentaDAO();
-    DetalleVenta detalle = new DetalleVenta(); 
+    DetalleVenta detalle = new DetalleVenta();
     Productos producto = new Productos();
     ProductosDAO productoDAO = new ProductosDAO();
     Sucursal sucursal = new Sucursal();
-    SucursalDAO sucursalDAO = new SucursalDAO(); 
-    
-    
+    SucursalDAO sucursalDAO = new SucursalDAO();
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -73,64 +73,68 @@ public class Controlador extends HttpServlet {
             throws ServletException, IOException {
         String menu = request.getParameter("menu");
         String accion = request.getParameter("accion");
-        if (menu.equals("Cargo")){
-            
-            switch(accion){
+        if (menu.equals("Cargo")) {
+
+            switch (accion) {
                 case "ListarCargo":
                     List listaCargo = cargoDAO.listar();
                     request.setAttribute("cargos", listaCargo);
                     break;
                 case "AgregarCargo":
-                        String tipoCargo = request.getParameter("txtTipoCargo");
-                        cargo.setTipoCargo(tipoCargo);
-                        cargoDAO.agregar(cargo);
-                        request.getRequestDispatcher("Controlador?menu=Cargo&accion=ListarCargo").forward(request, response);
-                        break;
-               
+                    String tipoCargo = request.getParameter("txtTipoCargo");
+                    cargo.setTipoCargo(tipoCargo);
+                    cargoDAO.agregar(cargo);
+                    request.getRequestDispatcher("Controlador?menu=Cargo&accion=ListarCargo").forward(request, response);
+                    break;
+
                 case "Editar":
-                        
-                        break;    
-                        
+
+                    break;
+
                 case "Actualizar":
-                        
-                        break;
-                        
+
+                    break;
+
                 case "Eliminar":
-                        
-                        break;
+
+                    break;
             }
             request.getRequestDispatcher("Cargo.jsp").forward(request, response);
-        }else if(menu.equals("Clientes")){
-            switch(accion){
-                case "ListarCliente":
+        } else if (menu.equals("Clientes")) {
+            switch (accion) {
+                case "ListarClientes":
                     List listaClientes = clienteDAO.listarClientes();
                     request.setAttribute("clientes", listaClientes);
                     break;
                 case "AgregarCliente":
                     String DPI = request.getParameter("txtDPICliente");
                     String nombres = request.getParameter("txtNombresCliente");
+                    String apellidos = request.getParameter("txtApellidosCliente");
                     String direccion = request.getParameter("txtDireccionCliente");
                     String telefono = request.getParameter("txtTelefonoCliente");
+                    int membresia = Integer.parseInt(request.getParameter("txtMembresiaCliente"));
                     cliente.setDPICliente(DPI);
-                    cliente.setNombresCliente(nombres);
+                    cliente.setNombreCliente(nombres);
+                    cliente.setApellidoCliente(apellidos);
                     cliente.setDireccionCliente(direccion);
                     cliente.setTelefonoCliente(telefono);
+                    cliente.setCodigoMembresia(membresia);
                     clienteDAO.agregarCliente(cliente);
-                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=ListarCliente").forward(request, response);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=ListarClientes").forward(request, response);
                     break;
                 case "Editar":
-                    
+
                     break;
                 case "Actualizar":
-                    
+
                     break;
                 case "Eliminar":
-                    
+
                     break;
             }
             request.getRequestDispatcher("Clientes.jsp").forward(request, response);
-        }else if(menu.equals("Proveedores")){
-            switch(accion){
+        } else if (menu.equals("Proveedores")) {
+            switch (accion) {
                 case "ListarProveedores":
                     List listaProveedor = proveedorDAO.listarProveedores();
                     request.setAttribute("proveedores", listaProveedor);
@@ -146,11 +150,10 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Proveedores&accion=ListarProveedores").forward(request, response);
                     break;
             }
-            
-            
+
             request.getRequestDispatcher("Proveedores.jsp").forward(request, response);
-        }else if(menu.equals("Ventas")){
-            switch(accion){
+        } else if (menu.equals("Ventas")) {
+            switch (accion) {
                 case "ListarVentas":
                     List listaVentas = ventasDAO.listarVentas();
                     request.setAttribute("ventas", listaVentas);
@@ -170,24 +173,24 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Ventas&accion=ListarVentas").forward(request, response);
                     break;
                 case "Editar":
-                    
+
                     break;
                 case "Actualizar":
-                    
+
                     break;
                 case "Eliminar":
-                    
+
                     break;
             }
             request.getRequestDispatcher("Ventas.jsp").forward(request, response);
-        }else if(menu.equals("Empleados")){
-            switch(accion){
+        } else if (menu.equals("Empleados")) {
+            switch (accion) {
                 case "ListarEmpleados":
                     List listaEmpleados = empleadoDAO.listar();
                     request.setAttribute("empleados", listaEmpleados);
                     break;
                 case "AgregarEmpleado":
-                    String  DPI = request.getParameter("txtDPIEmpleado");
+                    String DPI = request.getParameter("txtDPIEmpleado");
                     String nombre = request.getParameter("txtNombreEmpleado");
                     String apellido = request.getParameter("txtApellidoEmpleado");
                     String telefono = request.getParameter("txtTelefonoEmpleado");
@@ -212,7 +215,7 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Empleados.jsp").forward(request, response);
-        }else if(menu.equals("Principal")){
+        } else if (menu.equals("Principal")) {
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
         } else if (menu.equals("Marcas")) {
             switch (accion) {
@@ -229,7 +232,6 @@ public class Controlador extends HttpServlet {
                     marcas.setCodigoProveedor(codProveedor);
                     marcasDAO.agregarMarcas(marcas);
                     request.getRequestDispatcher("Controlador?menu=Marcas&accion=ListarMarcas").forward(request, response);
-                    
 
                     break;
                 case "Editar":
@@ -241,8 +243,8 @@ public class Controlador extends HttpServlet {
 
             }
             request.getRequestDispatcher("Marcas.jsp").forward(request, response);
-        }else if(menu.equals("Categorias")){
-            switch(accion){
+        } else if (menu.equals("Categorias")) {
+            switch (accion) {
                 case "ListarCategorias":
                     List listaCategorias = categoriasDAO.listar();
                     request.setAttribute("categorias", listaCategorias);
@@ -256,63 +258,60 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Categorias&accion=ListarCategorias").forward(request, response);
                     break;
                 case "Editar":
-                    
+
                     break;
                 case "Actualizar":
-                    
+
                     break;
                 case "Eliminar":
-                    
-                    break;    
+
+                    break;
             }
             request.getRequestDispatcher("Categorias.jsp").forward(request, response);
-        }else if(menu.equals("DetalleVenta")){
-            
-                       
-            switch(accion){
+        } else if (menu.equals("DetalleVenta")) {
+
+            switch (accion) {
                 case "ListarDetalle":
                     List listarDetalle = detalleDAO.listarDetalleVenta();
                     request.setAttribute("Detalles", listarDetalle);
                     break;
                 case "AgregarDetalle":
-                       String cantidad = request.getParameter("txtcantidad");
-                        String precio = request.getParameter("txtPrecio");
-                        String codigoProducto = request.getParameter("txtCodProducto");
-                        String codigoVenta = request.getParameter("txtCodVenta");
-                        detalle.setCantidad(Integer.parseInt(cantidad));
-                        detalle.setPrecio(Double.parseDouble(precio));
-                        detalle.setCodigoProducto(Integer.parseInt(codigoProducto));
-                        detalle.setCodigoVenta(Integer.parseInt(codigoVenta));
-                        detalleDAO.agregar(detalle);
-                        request.getRequestDispatcher("Controlador?menu=DetalleVenta&accion=ListarDetalle").forward(request, response);
-                        break;
-                        
-                        
-               
+                    String cantidad = request.getParameter("txtcantidad");
+                    String precio = request.getParameter("txtPrecio");
+                    String codigoProducto = request.getParameter("txtCodProducto");
+                    String codigoVenta = request.getParameter("txtCodVenta");
+                    detalle.setCantidad(Integer.parseInt(cantidad));
+                    detalle.setPrecio(Double.parseDouble(precio));
+                    detalle.setCodigoProducto(Integer.parseInt(codigoProducto));
+                    detalle.setCodigoVenta(Integer.parseInt(codigoVenta));
+                    detalleDAO.agregar(detalle);
+                    request.getRequestDispatcher("Controlador?menu=DetalleVenta&accion=ListarDetalle").forward(request, response);
+                    break;
+
                 case "Editar":
-                        
-                        break;    
-                        
+
+                    break;
+
                 case "Actualizar":
-                        
-                        break;
-                        
+
+                    break;
+
                 case "Eliminar":
-                        
-                        break;
+
+                    break;
             }
-            
+
             request.getRequestDispatcher("DetalleVenta.jsp").forward(request, response);
-            
-        }else if(menu.equals("Productos")){
-            switch(accion){
+
+        } else if (menu.equals("Productos")) {
+            switch (accion) {
                 case "ListarProducto":
                     List listaProductos = productoDAO.listarProducto();
                     request.setAttribute("Productos", listaProductos);
                     break;
                 case "AgregarProducto":
                     String Nombre = request.getParameter("txtNombreProducto");
-                    double Precio = Double.parseDouble(request.getParameter("txtPrecio")); 
+                    double Precio = Double.parseDouble(request.getParameter("txtPrecio"));
                     int Stock = Integer.parseInt(request.getParameter("txtStock"));
                     int Marca = Integer.parseInt(request.getParameter("txtCodigoMarca"));
                     int Categoria = Integer.parseInt(request.getParameter("txtCodigoCategoria"));
@@ -323,15 +322,15 @@ public class Controlador extends HttpServlet {
                     producto.setCodigoCategoria(Categoria);
                     productoDAO.agregar(producto);
                     request.getRequestDispatcher("Controlador?menu=Productos&accion=ListarProducto").forward(request, response);
-                    
+
                     break;
-                   
+
             }
-        
+
             request.getRequestDispatcher("Productos.jsp").forward(request, response);
-            
-        }else if(menu.equals("Sucursal")){
-            switch(accion){
+
+        } else if (menu.equals("Sucursal")) {
+            switch (accion) {
                 case "ListarSucursal":
                     List listaSucursal = sucursalDAO.listarSucursal();
                     request.setAttribute("sucursales", listaSucursal);
@@ -357,7 +356,7 @@ public class Controlador extends HttpServlet {
             }
             request.getRequestDispatcher("Sucursal.jsp").forward(request, response);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
