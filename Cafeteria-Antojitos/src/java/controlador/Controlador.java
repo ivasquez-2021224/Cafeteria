@@ -14,10 +14,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import modelo.Cargo;
 import modelo.CargoDAO;
+import modelo.Categorias;
+import modelo.CategoriasDAO;
 import modelo.Cliente;
 import modelo.ClienteDAO;
+import modelo.DetalleVenta;
+import modelo.DetalleVentaDAO;
 import modelo.Empleado;
 import modelo.EmpleadoDAO;
+import modelo.Marcas;
+import modelo.MarcasDAO;
 import modelo.Productos;
 import modelo.ProductosDAO;
 import modelo.Proveedor;
@@ -39,9 +45,16 @@ public class Controlador extends HttpServlet {
     Ventas ventas = new Ventas();
     VentasDAO ventasDAO = new VentasDAO();
     EmpleadoDAO empleadoDAO = new EmpleadoDAO();
-    Empleado empleado = new Empleado();
+    Empleado empleado = new Empleado();   
+    Marcas marcas = new Marcas();
+    MarcasDAO marcasDAO = new MarcasDAO();
+    Categorias categorias = new Categorias();
+    CategoriasDAO categoriasDAO = new CategoriasDAO();
+    DetalleVentaDAO detalleDAO = new DetalleVentaDAO();
+    DetalleVenta detalle = new DetalleVenta(); 
     Productos producto = new Productos();
-    ProductosDAO productoDAO = new ProductosDAO();    
+    ProductosDAO productoDAO = new ProductosDAO();
+    
     
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -195,6 +208,96 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Empleados.jsp").forward(request, response);
         }else if(menu.equals("Principal")){
             request.getRequestDispatcher("Principal.jsp").forward(request, response);
+        } else if (menu.equals("Marcas")) {
+            switch (accion) {
+
+                case "ListarMarcas":
+                    List listaMarca = marcasDAO.listarMarcas();
+                    request.setAttribute("marcas", listaMarca);
+                    break;
+
+                case "Agregar":
+                    String nombre = request.getParameter("txtNombresMarca");
+                    int codProveedor = Integer.parseInt(request.getParameter("txtCodigoProveedor"));
+                    marcas.setNombreMarca(nombre);
+                    marcas.setCodigoProveedor(codProveedor);
+                    marcasDAO.agregarMarcas(marcas);
+                    request.getRequestDispatcher("Controlador?menu=Marcas&accion=ListarMarcas").forward(request, response);
+                    
+
+                    break;
+                case "Editar":
+                    break;
+                case "Actualizar":
+                    break;
+                case "Eliminar":
+                    break;
+
+            }
+            request.getRequestDispatcher("Marcas.jsp").forward(request, response);
+        }else if(menu.equals("Categorias")){
+            switch(accion){
+                case "ListarCategorias":
+                    List listaCategorias = categoriasDAO.listar();
+                    request.setAttribute("categorias", listaCategorias);
+                    break;
+                case "AgregarCategorias":
+                    String nombreCategoria = request.getParameter("txtNombreCategoria");
+                    String descripcionCategoria = request.getParameter("txtDescripcionCategoria");
+                    categorias.setNombreCategoria(nombreCategoria);
+                    categorias.setDescripcionCategoria(descripcionCategoria);
+                    categoriasDAO.agregar(categorias);
+                    request.getRequestDispatcher("Controlador?menu=Categorias&accion=ListarCategorias").forward(request, response);
+                    break;
+                case "Editar":
+                    
+                    break;
+                case "Actualizar":
+                    
+                    break;
+                case "Eliminar":
+                    
+                    break;    
+            }
+            request.getRequestDispatcher("Categorias.jsp").forward(request, response);
+        }else if(menu.equals("DetalleVenta")){
+            
+                       
+            switch(accion){
+                case "ListarDetalle":
+                    List listarDetalle = detalleDAO.listarDetalleVenta();
+                    request.setAttribute("Detalles", listarDetalle);
+                    break;
+                case "AgregarDetalle":
+                       String cantidad = request.getParameter("txtcantidad");
+                        String precio = request.getParameter("txtPrecio");
+                        String codigoProducto = request.getParameter("txtCodProducto");
+                        String codigoVenta = request.getParameter("txtCodVenta");
+                        detalle.setCantidad(Integer.parseInt(cantidad));
+                        detalle.setPrecio(Double.parseDouble(precio));
+                        detalle.setCodigoProducto(Integer.parseInt(codigoProducto));
+                        detalle.setCodigoVenta(Integer.parseInt(codigoVenta));
+                        detalleDAO.agregar(detalle);
+                        request.getRequestDispatcher("Controlador?menu=DetalleVenta&accion=ListarDetalle").forward(request, response);
+                        break;
+                        
+                        
+               
+                case "Editar":
+                        
+                        break;    
+                        
+                case "Actualizar":
+                        
+                        break;
+                        
+                case "Eliminar":
+                        
+                        break;
+            }
+            
+            request.getRequestDispatcher("DetalleVenta.jsp").forward(request, response);
+            
         }else if(menu.equals("Productos")){
             switch(accion){
                 case "ListarProducto":
@@ -222,6 +325,7 @@ public class Controlador extends HttpServlet {
             request.getRequestDispatcher("Productos.jsp").forward(request, response);
             
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

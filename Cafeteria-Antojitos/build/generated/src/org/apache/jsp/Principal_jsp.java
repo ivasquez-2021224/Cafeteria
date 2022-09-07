@@ -3,7 +3,6 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import modelo.Empleado;
 
 public final class Principal_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -42,7 +41,6 @@ public final class Principal_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
@@ -93,28 +91,7 @@ public final class Principal_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </li>\r\n");
       out.write("                </ul>\r\n");
       out.write("              </div>\r\n");
-      out.write("            <div class=\"dropdown\">\r\n");
-      out.write("            <button style=\"border:none\" class=\"btn btn-outline-warning dropdown-toggle\" type=\"button\" id=\"dropdownMenuButton\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" >\r\n");
-      out.write("                ");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.getNombresEmpleado()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\r\n");
-      out.write("            </button>\r\n");
-      out.write("            <div class=\"dropdown-menu dropdown-menu-right \" aria-labellebdy=\"dropdownMenuButton\" >\r\n");
-      out.write("                <a class=\"dropdown-item text-center\" href=\"#\" >\r\n");
-      out.write("                    <img src=\"img/usuario.png\" alt=\"\" width=\"50\">\r\n");
-      out.write("                </a>\r\n");
-      out.write("                <a class=\"dropdown-item text-center\" href=\"#\">");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.getUsuario()}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("</a>\r\n");
-      out.write("                <a class=\"dropdown-item text-center\" href=\"#\">usuario@gmail.com</a>\r\n");
-      out.write("                <div class=\"dropdown-divider\"></div>\r\n");
-      out.write("                <form action=\"Validar\" method=\"POST\">\r\n");
-      out.write("                    <button  name=\"accion\" name=\"Salir\" class=\"dropdown-item text-center\" href=\"#\">Salir</button>\r\n");
-      out.write("                </form>            \r\n");
-      out.write("            </div>\r\n");
-      out.write("            </div>          \r\n");
-      out.write("        </nav>\r\n");
-      out.write("         \r\n");
+      out.write("         </nav>\r\n");
       out.write("                    <div class=\"m-4\" style=\"height: 620px; \">\r\n");
       out.write("                        <iframe name=\"myFrame\" style=\"height: 100%; width: 100%; border: none;\"></iframe>\r\n");
       out.write("                    </div>\r\n");
