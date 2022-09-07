@@ -21,39 +21,55 @@
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Home" target="myFrame">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Clientes&accion=ListarCliente" target="myFrame">Clientes</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Clientes&accion=ListarClientes" target="myFrame">Clientes</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Categorias" target="myFrame">Categorias</a>
-                  </li>
-                  <li class="nav-item">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Proveedores" target="myFrame">Proveedores</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Categorias&accion=ListarCategorias" target="myFrame">Categorias</a>
                   </li>
                   <li class="nav-item">
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Cargo&accion=ListarCargo" target="myFrame">Cargo</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Sucursal" target="myFrame">Sucursal</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Sucursal&accion=ListarSucursal" target="myFrame">Sucursal</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Marcas" target="myFrame">Marcas</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Marcas&accion=ListarMarcas" target="myFrame">Marcas</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Productos" target="myFrame">Productos</a>
+                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Productos&accion=ListarProducto" target="myFrame">Productos</a>                     
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Empleados" target="myFrame">Empleados</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Empleados&accion=ListarEmpleados" target="myFrame">Empleados</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Ventas" target="myFrame">Ventas</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Ventas&accion=ListarVentas" target="myFrame">Ventas</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=DetalleVenta" target="myFrame">Detalle de la venta</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=DetalleVenta&accion=ListarDetalle" target="myFrame">Detalle de la venta</a>
                   </li>
+                  <li class="nav-item">
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" class="btn btn-outline-light" href="Controlador?menu=Proveedores&accion=ListarProveedores" target="myFrame">Proveedores</a>
+                    </li>
                 </ul>
               </div>
+                <div class="dropdown">
+                    <button style="border:none" class="btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                        ${usuario.getNombreEmpleado()}
+                    </button>
+                <div class="dropdown-menu dropdown-menu-right " aria-labellebdy="dropdownMenuButton" >
+                    <a class="dropdown-item text-center" href="#" >
+                        <img src="img/usuario.png" alt="" width="50">
+                    </a>
+                    <a class="dropdown-item text-center" href="#">${usuario.getUsuario()}</a>
+                    <a class="dropdown-item text-center" href="#">${usuario.getTelefonoEmpleado()}</a>
+                    <div class="dropdown-divider"></div>
+                    <form action="Validar" method="POST">
+                        <button  name="accion" name="Salir" class="dropdown-item text-center" href="#">Salir</button>
+                    </form>            
+                </div>                  
+              </div>
          </nav>
-                    <div class="m-4" style="height: 620px; ">
+                    <div class="m-4" style="height: 655px; ">
                         <iframe name="myFrame" style="height: 100%; width: 100%; border: none;"></iframe>
                     </div>
         
