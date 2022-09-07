@@ -385,6 +385,8 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Membresia.jsp").forward(request, response);
+        }else if(menu.equals("Home")){
+            request.getRequestDispatcher("Home.jsp").forward(request, response);
         }
 
     }
