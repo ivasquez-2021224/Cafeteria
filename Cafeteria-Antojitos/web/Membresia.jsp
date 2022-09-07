@@ -41,6 +41,7 @@
                             <td>CODIGO MEMBRESIA</td>
                             <td>TIPO MEMBRESIA</td>
                             <td>DESCRIPCION MEMBRESIA</td>
+                            <td>ACCIONES</td>
                         </tr>
                     </thead>
                     <tbody>

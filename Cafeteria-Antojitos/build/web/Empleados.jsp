@@ -65,6 +65,7 @@
                             <td>USUARIO</td>
                             <td>CODIGO CARGO</td>
                             <td>CODIGO SUCURSAL</td>
+                            <td>ACCIONES</td>
                         </tr>
                     </thead>
                     <tbody>

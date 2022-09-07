@@ -21,7 +21,7 @@
                         <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Proveedores</h1>
                         <div class="form-group">
                             <label>Nombres:</label>
-                            <input type="text" name="txtNombresProveedor" class="form-control">
+                            <input type="text" name="txtNombreProveedor" class="form-control">
                             <label>Dirección:</label>
                             <input type="text" name="txtDireccionProveedor" class="form-control">
                             <label>Teléfono:</label>
@@ -49,7 +49,7 @@
                         <c:forEach var="proveedor" items="${proveedores}">
                         <tr> 
                         <td>${proveedor.getCodigoProveedor()}</td>
-                        <td>${proveedor.getNombresProveedor()}</td>
+                        <td>${proveedor.getNombreProveedor()}</td>
                         <td>${proveedor.getDireccion()}</td>
                         <td>${proveedor.getTelefono()}</td>
                         <td>

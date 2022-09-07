@@ -144,10 +144,10 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("proveedores", listaProveedor);
                     break;
                 case "AgregarProveedor":
-                    String Nombre = request.getParameter("txtNombresProveedor");
+                    String Nombre = request.getParameter("txtNombreProveedor");
                     String Direccion = request.getParameter("txtDireccionProveedor");
                     String Telefono = request.getParameter("txtTelefonoProveedor");
-                    proveedor.setNombresProveedor(Nombre);
+                    proveedor.setNombreProveedor(Nombre);
                     proveedor.setDireccion(Direccion);
                     proveedor.setTelefono(Telefono);
                     proveedorDAO.agregarProveedor(proveedor);
