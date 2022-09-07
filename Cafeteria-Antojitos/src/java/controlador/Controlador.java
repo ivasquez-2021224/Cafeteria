@@ -24,8 +24,12 @@ import modelo.Empleado;
 import modelo.EmpleadoDAO;
 import modelo.Marcas;
 import modelo.MarcasDAO;
+import modelo.Productos;
+import modelo.ProductosDAO;
 import modelo.Proveedor;
 import modelo.ProveedorDAO;
+import modelo.Sucursal;
+import modelo.SucursalDAO;
 import modelo.Ventas;
 import modelo.VentasDAO;
 
@@ -49,7 +53,11 @@ public class Controlador extends HttpServlet {
     Categorias categorias = new Categorias();
     CategoriasDAO categoriasDAO = new CategoriasDAO();
     DetalleVentaDAO detalleDAO = new DetalleVentaDAO();
-    DetalleVenta detalle = new DetalleVenta();
+    DetalleVenta detalle = new DetalleVenta(); 
+    Productos producto = new Productos();
+    ProductosDAO productoDAO = new ProductosDAO();
+    Sucursal sucursal = new Sucursal();
+    SucursalDAO sucursalDAO = new SucursalDAO(); 
     
     
     /**
@@ -294,6 +302,58 @@ public class Controlador extends HttpServlet {
             
             request.getRequestDispatcher("DetalleVenta.jsp").forward(request, response);
             
+        }else if(menu.equals("Productos")){
+            switch(accion){
+                case "ListarProducto":
+                    List listaProductos = productoDAO.listarProducto();
+                    request.setAttribute("Productos", listaProductos);
+                    break;
+                case "AgregarProducto":
+                    String Nombre = request.getParameter("txtNombreProducto");
+                    double Precio = Double.parseDouble(request.getParameter("txtPrecio")); 
+                    int Stock = Integer.parseInt(request.getParameter("txtStock"));
+                    int Marca = Integer.parseInt(request.getParameter("txtCodigoMarca"));
+                    int Categoria = Integer.parseInt(request.getParameter("txtCodigoCategoria"));
+                    producto.setNombreProducto(Nombre);
+                    producto.setPrecio(Precio);
+                    producto.setStock(Stock);
+                    producto.setCodigoMarca(Marca);
+                    producto.setCodigoCategoria(Categoria);
+                    productoDAO.agregar(producto);
+                    request.getRequestDispatcher("Controlador?menu=Productos&accion=ListarProducto").forward(request, response);
+                    
+                    break;
+                   
+            }
+        
+            request.getRequestDispatcher("Productos.jsp").forward(request, response);
+            
+        }else if(menu.equals("Sucursal")){
+            switch(accion){
+                case "ListarSucursal":
+                    List listaSucursal = sucursalDAO.listarSucursal();
+                    request.setAttribute("sucursales", listaSucursal);
+                    break;
+                case "AgregarSucursal":
+                    String DPI = request.getParameter("txtCodigoSucursal");
+                    String nombres = request.getParameter("txtNombreSucursal");
+                    String direccion = request.getParameter("txtDireccion");
+                    sucursal.setNombreSucursal(nombres);
+                    sucursal.setDireccion(direccion);
+                    sucursalDAO.agregarSucursal(sucursal);
+                    request.getRequestDispatcher("Controlador?menu=Sucursal&accion=ListarSucursal").forward(request, response);
+                    break;
+                case "Editar":
+
+                    break;
+                case "Actualizar":
+
+                    break;
+                case "Eliminar":
+
+                    break;
+            }
+            request.getRequestDispatcher("Sucursal.jsp").forward(request, response);
         }
         
     }
