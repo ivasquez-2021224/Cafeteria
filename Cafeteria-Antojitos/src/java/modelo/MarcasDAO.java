@@ -20,37 +20,36 @@ public class MarcasDAO {
     
     //METODO DE LISTAR CLIENTES 
     
-    public List listar(){
+    public List listarMarcas(){
         String sql = "select * from Marcas";
-        List<Marcas> listaMarcas = new ArrayList<Marcas>();
+        List<Marcas> listaMarca = new ArrayList<Marcas>();
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next()){
                 Marcas ma = new Marcas();
-                ma.setCodigoMarca(rs.getInt("1"));
-                ma.setNombreMarca(rs.getString("2"));
-                ma.setCodigoProveedor(rs.getString("3"));
-                listaMarcas.add(ma);
-                
+                ma.setCodigoMarca(rs.getInt(1));
+                ma.setNombreMarca(rs.getString(2));
+                ma.setCodigoProveedor(rs.getInt(3));
+                listaMarca.add(ma);  
             }
         }catch(Exception e){
             e.printStackTrace();
         }
 
         
-        return listaMarcas;
+        return listaMarca;
     }
     
     //MÉTODO PARA AGREGAR
-    public int agregar(Marcas ma){
-        String sql = "Insert into Marcas (nombreMarca,codigoProveedor ) values (?,?)";
+    public int agregarMarcas(Marcas ma){
+        String sql = "Insert into Marcas (nombreMarca,codigoProveedor) values (?,?)";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, ma.getNombreMarca());
-            ps.setString(2, ma.getCodigoProveedor());
+            ps.setInt(2, ma.getCodigoProveedor());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
@@ -73,7 +72,7 @@ public class MarcasDAO {
             rs = ps.executeQuery();
             while (rs.next()){
                 ma.setNombreMarca(rs.getString(2));
-                ma.setCodigoProveedor(rs.getString(3));
+                ma.setCodigoProveedor(rs.getInt(3));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -85,13 +84,13 @@ public class MarcasDAO {
     
     
     //MÉTODO PARA EDITAR
-    public int actualizar(Marcas ma){
+    public int actualizarMarcas(Marcas ma){
         String sql = "Update marca set nombreMarca = ?, codigoProveedoor = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, ma.getNombreMarca());
-            ps.setString(2, ma.getCodigoProveedor());
+            ps.setInt(2, ma.getCodigoProveedor());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
@@ -103,7 +102,7 @@ public class MarcasDAO {
     
     
     //MÉTODO PARA ELIMINAR
-    public void eliminar(int codMarca){
+    public void eliminarMarcas(int codMarca){
         String sql = "delete from Marcas where codigoMarca = "+codMarca;
         try{
             con = cn.Conexion();

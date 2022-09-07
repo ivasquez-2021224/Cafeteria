@@ -23,16 +23,16 @@
                             <label>Nombre Marca:</label>
                             <input type="text" name="txtNombresMarca" class="form-control">
                             <label>Proveedor</label>
-                            <input type="text" name="txtDireccionProveedor" class="form-control">
-                            
+                            <input type="text" name="txtCodigoProveedor" class="form-control">
+
                         </div>
                         <label>ACCIONES</label>
-                        <input type="submit" name="accion" value="AgregarMarca" class="btn btn-info">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
-            
+
             <div class="col-lg-8">
                 <table class="table table-hover">
                     <thead>
@@ -41,30 +41,34 @@
                             <td>Nombres Marcas</td>
                             <td>Proveedores</td>
                             <td>Acciones</td>
-                            
+
                         </tr> 
                     </thead>
                     <tbody>
-                        <c:forEach var="marcas" items="${marcas}">  
-                    <tr> 
-                        <td>${marcas.getCodigoMarca()}</td>   
-                        <td>${marcas.getNombreMarca}()</td>
-                        <td>${marcas.getCodigoProveedor}()</td>
-                        <td>
-                    <a class="btn btn-warning" href="">Editar</a>
-                    <a class="btn btn-danger" href="">Eliminar</a>
-                        </td>
-                    </tr>
-                    </c:forEach>    
+                        <c:forEach var="marcas" items="${marcas}">
+                            <tr> 
+                                <td>${marcas.getCodigoMarca()}</td>   
+                                <td>${marcas.getNombreMarca()}</td>
+                                <td>${marcas.getCodigoProveedor()}</td>
+                                <td>
+                                    <a class="btn btn-warning" href="#">Editar</a>
+                                    <a class="btn btn-danger" href="#">Eliminar</a>
+                                </td>
+                            </tr>
+
+                        </c:forEach>  
+
                     </tbody>
                 </table>
             </div>
 
-        
-        
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </body>
 </html>
+
+
 
