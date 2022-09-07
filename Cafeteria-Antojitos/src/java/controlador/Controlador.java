@@ -18,6 +18,8 @@ import modelo.Categorias;
 import modelo.CategoriasDAO;
 import modelo.Cliente;
 import modelo.ClienteDAO;
+import modelo.DetalleVenta;
+import modelo.DetalleVentaDAO;
 import modelo.Empleado;
 import modelo.EmpleadoDAO;
 import modelo.Marcas;
@@ -46,6 +48,8 @@ public class Controlador extends HttpServlet {
     MarcasDAO marcasDAO = new MarcasDAO();
     Categorias categorias = new Categorias();
     CategoriasDAO categoriasDAO = new CategoriasDAO();
+    DetalleVentaDAO detalleDAO = new DetalleVentaDAO();
+    DetalleVenta detalle = new DetalleVenta();
     
     
     /**
@@ -252,7 +256,46 @@ public class Controlador extends HttpServlet {
                     break;    
             }
             request.getRequestDispatcher("Categorias.jsp").forward(request, response);
+        }else if(menu.equals("DetalleVenta")){
+            
+                       
+            switch(accion){
+                case "ListarDetalle":
+                    List listarDetalle = detalleDAO.listarDetalleVenta();
+                    request.setAttribute("Detalles", listarDetalle);
+                    break;
+                case "AgregarDetalle":
+                       String cantidad = request.getParameter("txtcantidad");
+                        String precio = request.getParameter("txtPrecio");
+                        String codigoProducto = request.getParameter("txtCodProducto");
+                        String codigoVenta = request.getParameter("txtCodVenta");
+                        detalle.setCantidad(Integer.parseInt(cantidad));
+                        detalle.setPrecio(Double.parseDouble(precio));
+                        detalle.setCodigoProducto(Integer.parseInt(codigoProducto));
+                        detalle.setCodigoVenta(Integer.parseInt(codigoVenta));
+                        detalleDAO.agregar(detalle);
+                        request.getRequestDispatcher("Controlador?menu=DetalleVenta&accion=ListarDetalle").forward(request, response);
+                        break;
+                        
+                        
+               
+                case "Editar":
+                        
+                        break;    
+                        
+                case "Actualizar":
+                        
+                        break;
+                        
+                case "Eliminar":
+                        
+                        break;
+            }
+            
+            request.getRequestDispatcher("DetalleVenta.jsp").forward(request, response);
+            
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

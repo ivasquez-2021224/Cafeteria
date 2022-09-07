@@ -14,7 +14,7 @@
 
         <title></title>
     </head>
-    <body>
+    <body style="background-color: #b3b3b1;">
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
