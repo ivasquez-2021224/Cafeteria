@@ -3,7 +3,8 @@ package modelo;
 public class Empleado {
     private int codigoEmpleado;
     private String DPIEmpleado;
-    private String nombresEmpleado;
+    private String nombreEmpleado;
+    private String apellidoEmpleado;
     private String telefonoEmpleado;
     private String usuario;
     private int codigoCargo;
@@ -12,10 +13,11 @@ public class Empleado {
     public Empleado() {
     }
 
-    public Empleado(int codigoEmpleado, String DPIEmpleado, String nombresEmpleado, String telefonoEmpleado, String usuario, int codigoCargo, int codigoSucursal) {
+    public Empleado(int codigoEmpleado, String DPIEmpleado, String nombreEmpleado, String apellidoEmpleado, String telefonoEmpleado, String usuario, int codigoCargo, int codigoSucursal) {
         this.codigoEmpleado = codigoEmpleado;
         this.DPIEmpleado = DPIEmpleado;
-        this.nombresEmpleado = nombresEmpleado;
+        this.nombreEmpleado = nombreEmpleado;
+        this.apellidoEmpleado = apellidoEmpleado;
         this.telefonoEmpleado = telefonoEmpleado;
         this.usuario = usuario;
         this.codigoCargo = codigoCargo;
@@ -38,12 +40,20 @@ public class Empleado {
         this.DPIEmpleado = DPIEmpleado;
     }
 
-    public String getNombresEmpleado() {
-        return nombresEmpleado;
+    public String getNombreEmpleado() {
+        return nombreEmpleado;
     }
 
-    public void setNombresEmpleado(String nombresEmpleado) {
-        this.nombresEmpleado = nombresEmpleado;
+    public void setNombreEmpleado(String nombreEmpleado) {
+        this.nombreEmpleado = nombreEmpleado;
+    }
+
+    public String getApellidoEmpleado() {
+        return apellidoEmpleado;
+    }
+
+    public void setApellidoEmpleado(String apellidoEmpleado) {
+        this.apellidoEmpleado = apellidoEmpleado;
     }
 
     public String getTelefonoEmpleado() {
@@ -77,6 +87,4 @@ public class Empleado {
     public void setCodigoSucursal(int codigoSucursal) {
         this.codigoSucursal = codigoSucursal;
     }
-    
-    
 }

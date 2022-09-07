@@ -188,13 +188,15 @@ public class Controlador extends HttpServlet {
                     break;
                 case "AgregarEmpleado":
                     String  DPI = request.getParameter("txtDPIEmpleado");
-                    String nombres = request.getParameter("txtNombresEmpleado");
+                    String nombre = request.getParameter("txtNombreEmpleado");
+                    String apellido = request.getParameter("txtApellidoEmpleado");
                     String telefono = request.getParameter("txtTelefonoEmpleado");
                     String user = request.getParameter("txtUsuario");
                     int codCar = Integer.parseInt(request.getParameter("txtCodigoCargo"));
                     int codSuc = Integer.parseInt(request.getParameter("txtCodigoSucursal"));
                     empleado.setDPIEmpleado(DPI);
-                    empleado.setNombresEmpleado(nombres);
+                    empleado.setNombreEmpleado(nombre);
+                    empleado.setApellidoEmpleado(apellido);
                     empleado.setTelefonoEmpleado(telefono);
                     empleado.setUsuario(user);
                     empleado.setCodigoCargo(codCar);

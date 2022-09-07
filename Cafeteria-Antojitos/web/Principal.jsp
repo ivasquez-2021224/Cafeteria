@@ -52,6 +52,22 @@
                     </li>
                 </ul>
               </div>
+                <div class="dropdown">
+                    <button style="border:none" class="btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                        ${usuario.getNombreEmpleado()}
+                    </button>
+                <div class="dropdown-menu dropdown-menu-right " aria-labellebdy="dropdownMenuButton" >
+                    <a class="dropdown-item text-center" href="#" >
+                        <img src="img/usuario.png" alt="" width="50">
+                    </a>
+                    <a class="dropdown-item text-center" href="#">${usuario.getUsuario()}</a>
+                    <a class="dropdown-item text-center" href="#">${usuario.getTelefonoEmpleado()}</a>
+                    <div class="dropdown-divider"></div>
+                    <form action="Validar" method="POST">
+                        <button  name="accion" name="Salir" class="dropdown-item text-center" href="#">Salir</button>
+                    </form>            
+                </div>                  
+              </div>
          </nav>
                     <div class="m-4" style="height: 620px; ">
                         <iframe name="myFrame" style="height: 100%; width: 100%; border: none;"></iframe>
