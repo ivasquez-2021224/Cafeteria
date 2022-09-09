@@ -144,7 +144,7 @@ insert into Proveedores (nombreProveedor, direccion, telefono)
 select * from Proveedores;
     
 insert into Cargo (tipoCargo) 
-	values ('Gerente');
+	values ('Director general');
 insert into Cargo (tipoCargo) 
 	values ('Mesero');
 insert into Cargo (tipoCargo) 
@@ -153,6 +153,18 @@ insert into Cargo (tipoCargo)
 	values ('Cocinero');
 insert into Cargo (tipoCargo) 
 	values ('Repartidor');
+insert into Cargo (tipoCargo) 
+	values ('Supervisor');
+insert into Cargo (tipoCargo) 
+	values ('Gerente de ventas');
+insert into Cargo (tipoCargo) 
+	values ('Gerente');
+insert into Cargo (tipoCargo) 
+	values ('Jefe de recursos humanos');
+insert into Cargo (tipoCargo) 
+	values ('Responsable de mercadotecnia');
+insert into Cargo (tipoCargo) 
+	values ('Director de operaciones');
     
 select * from Cargo;
     
@@ -228,9 +240,22 @@ insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEm
 insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
 	values ('4585896589658', 'Marcelino', 'vasquez', '54747859', 'mvasquez', '3', '3');
 insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
-	values ('1254785545856', 'Eduardo', 'Salazar', '54789652', 'dsalazar', '4', '4');
+	values ('1254785545856', 'Daniel', 'Salazar', '54789652', 'dsalazar', '4', '4');
 insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
 	values ('3256589658658', 'Allan', 'Xiquin', '45748547', 'axiquin', '5', '5');
+insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+	values ('5699696985659', 'Darien', 'Velasquez', '85658569', 'dvelasquez', '6', '1');
+insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+	values ('5145698585745', 'Carlos ', 'Tomas', '56966585', 'ctomas', '7', '2');
+insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+	values ('2145255632263', 'Maynor', 'Sicaján', '54785698', 'msicajan', '8', '3');
+insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+	values ('5898854784547', 'Bryan', 'Rabanales', '45856996', 'brabanales', '9', '4');
+insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+	values ('5898569625552', 'Axel', 'Sumpango', '45899633', 'asumpango', '10', '5');
+insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) 
+	values ('5855695585658', 'Job', 'Sis', '55625663', 'jsis', '11', '1');
+
     
 select * from Empleados;
     
