@@ -11,7 +11,7 @@ public class Conexion {
     public Connection Conexion(){
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBCafeteriaAntojitos?useSSL=false", "root", "root12345");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/DBCafeteriaAntojitos?useSSL=false", "root", "EDjRNDfzQA");
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("Ha Ocurrido un error al conectar con la base de datos "+e);

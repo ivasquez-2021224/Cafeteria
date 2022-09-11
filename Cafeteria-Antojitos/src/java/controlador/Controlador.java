@@ -63,6 +63,7 @@ public class Controlador extends HttpServlet {
     SucursalDAO sucursalDAO = new SucursalDAO();
     Membresia membresia = new Membresia();
     MembresiaDAO membresiaDAO = new MembresiaDAO();
+    int codEmpleado;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -212,10 +213,30 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Empleados&accion=ListarEmpleados").forward(request, response);
                     break;
                 case "Editar":
+                    codEmpleado = Integer.parseInt(request.getParameter("codigoEmpleado"));
+                    Empleado e = empleadoDAO.listarCodigoEmpleado(codEmpleado);
+                    request.setAttribute("empleado", e); 
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=ListarEmpleados").forward(request, response);                    
                     break;
                 case "Actualizar":
+                    String DPIEmp = request.getParameter("txtDPIEmpleado");
+                    String nombreEmp = request.getParameter("txtNombreEmpleado");
+                    String apellidoEmp = request.getParameter("txtApellidoEmpleado");
+                    String telefonoEmp = request.getParameter("txtTelefonoEmpleado");
+                    String userEmp = request.getParameter("txtUsuario");
+                    empleado.setDPIEmpleado(DPIEmp);
+                    empleado.setNombreEmpleado(nombreEmp);
+                    empleado.setApellidoEmpleado(apellidoEmp);
+                    empleado.setTelefonoEmpleado(telefonoEmp);
+                    empleado.setUsuario(userEmp);
+                    empleado.setCodigoEmpleado(codEmpleado);
+                    empleadoDAO.actualizar(empleado);
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=ListarEmpleados").forward(request, response);                    
                     break;
                 case "Eliminar":
+                    codEmpleado = Integer.parseInt(request.getParameter("codigoEmpleado"));
+                    empleadoDAO.eliminar(codEmpleado);
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=ListarEmpleados").forward(request, response);                    
                     break;
             }
             request.getRequestDispatcher("Empleados.jsp").forward(request, response);
