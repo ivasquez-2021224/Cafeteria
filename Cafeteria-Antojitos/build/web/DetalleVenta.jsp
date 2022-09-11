@@ -51,6 +51,7 @@
                             <td>PRECIO</td>
                             <td>CODIGO PRODUCTO</td>
                             <td>CODIGO VENTA</td>
+                            <td>ACCIONES</td>
                         </tr>
                     </thead>
                     <tbody>

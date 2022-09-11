@@ -24,6 +24,8 @@ import modelo.Empleado;
 import modelo.EmpleadoDAO;
 import modelo.Marcas;
 import modelo.MarcasDAO;
+import modelo.Membresia;
+import modelo.MembresiaDAO;
 import modelo.Productos;
 import modelo.ProductosDAO;
 import modelo.Proveedor;
@@ -59,6 +61,10 @@ public class Controlador extends HttpServlet {
     ProductosDAO productoDAO = new ProductosDAO();
     Sucursal sucursal = new Sucursal();
     SucursalDAO sucursalDAO = new SucursalDAO();
+    Membresia membresia = new Membresia();
+    MembresiaDAO membresiaDAO = new MembresiaDAO();
+    int codEmpleado;
+    int codCliente;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -123,13 +129,30 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Clientes&accion=ListarClientes").forward(request, response);
                     break;
                 case "Editar":
-
+                    codCliente = Integer.parseInt(request.getParameter("codigoCliente"));
+                    Cliente c = clienteDAO.listarCodigoCliente(codCliente);
+                    request.setAttribute("cliente", c);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=ListarClientes").forward(request, response);
                     break;
-                case "Actualizar":
-
+                case "ActualizarCliente":
+                    String DPICli = request.getParameter("txtDPICliente");
+                    String nombresCli= request.getParameter("txtNombresCliente");
+                    String apellidosCli = request.getParameter("txtApellidosCliente");
+                    String direccionCli = request.getParameter("txtDireccionCliente");
+                    String telefonoCli = request.getParameter("txtTelefonoCliente");
+                    cliente.setDPICliente(DPICli);
+                    cliente.setNombreCliente(nombresCli);
+                    cliente.setApellidoCliente(apellidosCli);
+                    cliente.setDireccionCliente(direccionCli);
+                    cliente.setTelefonoCliente(telefonoCli);
+                    cliente.setCodigoCliente(codCliente);
+                    clienteDAO.actualizarCliente(cliente);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=ListarClientes").forward(request, response);
                     break;
                 case "Eliminar":
-
+                    codCliente = Integer.parseInt(request.getParameter("codigoCliente"));
+                    clienteDAO.eliminarCliente(codCliente);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=ListarClientes").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("Clientes.jsp").forward(request, response);
@@ -140,10 +163,10 @@ public class Controlador extends HttpServlet {
                     request.setAttribute("proveedores", listaProveedor);
                     break;
                 case "AgregarProveedor":
-                    String Nombre = request.getParameter("txtNombresProveedor");
+                    String Nombre = request.getParameter("txtNombreProveedor");
                     String Direccion = request.getParameter("txtDireccionProveedor");
                     String Telefono = request.getParameter("txtTelefonoProveedor");
-                    proveedor.setNombresProveedor(Nombre);
+                    proveedor.setNombreProveedor(Nombre);
                     proveedor.setDireccion(Direccion);
                     proveedor.setTelefono(Telefono);
                     proveedorDAO.agregarProveedor(proveedor);
@@ -208,10 +231,30 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Empleados&accion=ListarEmpleados").forward(request, response);
                     break;
                 case "Editar":
+                    codEmpleado = Integer.parseInt(request.getParameter("codigoEmpleado"));
+                    Empleado e = empleadoDAO.listarCodigoEmpleado(codEmpleado);
+                    request.setAttribute("empleado", e); 
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=ListarEmpleados").forward(request, response);                    
                     break;
                 case "Actualizar":
+                    String DPIEmp = request.getParameter("txtDPIEmpleado");
+                    String nombreEmp = request.getParameter("txtNombreEmpleado");
+                    String apellidoEmp = request.getParameter("txtApellidoEmpleado");
+                    String telefonoEmp = request.getParameter("txtTelefonoEmpleado");
+                    String userEmp = request.getParameter("txtUsuario");
+                    empleado.setDPIEmpleado(DPIEmp);
+                    empleado.setNombreEmpleado(nombreEmp);
+                    empleado.setApellidoEmpleado(apellidoEmp);
+                    empleado.setTelefonoEmpleado(telefonoEmp);
+                    empleado.setUsuario(userEmp);
+                    empleado.setCodigoEmpleado(codEmpleado);
+                    empleadoDAO.actualizar(empleado);
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=ListarEmpleados").forward(request, response);                    
                     break;
                 case "Eliminar":
+                    codEmpleado = Integer.parseInt(request.getParameter("codigoEmpleado"));
+                    empleadoDAO.eliminar(codEmpleado);
+                    request.getRequestDispatcher("Controlador?menu=Empleados&accion=ListarEmpleados").forward(request, response);                    
                     break;
             }
             request.getRequestDispatcher("Empleados.jsp").forward(request, response);
@@ -355,6 +398,34 @@ public class Controlador extends HttpServlet {
                     break;
             }
             request.getRequestDispatcher("Sucursal.jsp").forward(request, response);
+            
+        }else if(menu.equals("Membresia")){
+            switch(accion){
+                case "ListarMembresia":
+                    List listaMembresia = membresiaDAO.listarMembresia();
+                    request.setAttribute("membresias", listaMembresia);
+                    break;
+                case "AgregarMembresia":
+                    String tipoMembresia = request.getParameter("txtTipoMembresia");
+                    String descripcionMembresia = request.getParameter("txtDescripcionMembresia");
+                    membresia.setTipoMembresia(tipoMembresia);
+                    membresia.setDescripcionMembresia(descripcionMembresia);
+                    membresiaDAO.agregarMembresia(membresia);
+                    request.getRequestDispatcher("Controlador?menu=Membresia&accion=ListarMembresia").forward(request, response);
+                    break;
+                case "Editar":
+
+                    break;
+                case "Actualizar":
+
+                    break;
+                case "Eliminar":
+
+                    break;
+            }
+            request.getRequestDispatcher("Membresia.jsp").forward(request, response);
+        }else if(menu.equals("Home")){
+            request.getRequestDispatcher("Home.jsp").forward(request, response);
         }
 
     }

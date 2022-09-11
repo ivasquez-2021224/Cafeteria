@@ -48,17 +48,20 @@
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=DetalleVenta&accion=ListarDetalle" target="myFrame">Detalle de la venta</a>
                   </li>
                   <li class="nav-item">
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Membresia&accion=ListarMembresia" target="myFrame">Membresia</a>
+                  </li>
+                  <li class="nav-item">
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" class="btn btn-outline-light" href="Controlador?menu=Proveedores&accion=ListarProveedores" target="myFrame">Proveedores</a>
                     </li>
                 </ul>
               </div>
                 <div class="dropdown">
                     <button style="border:none" class="btn btn-outline-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                        ${usuario.getNombreEmpleado()}
+                        ${usuario.getNombreEmpleado()} ${usuario.getApellidoEmpleado()}
                     </button>
                 <div class="dropdown-menu dropdown-menu-right " aria-labellebdy="dropdownMenuButton" >
                     <a class="dropdown-item text-center" href="#" >
-                        <img src="img/usuario.png" alt="" width="50">
+                        <img src="${usuario.getUsuarioImg()}" alt="" width="50">
                     </a>
                     <a class="dropdown-item text-center" href="#">${usuario.getUsuario()}</a>
                     <a class="dropdown-item text-center" href="#">${usuario.getTelefonoEmpleado()}</a>

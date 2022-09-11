@@ -100,8 +100,6 @@ public class EmpleadoDAO {
                 emp.setApellidoEmpleado(rs.getString(4));
                 emp.setTelefonoEmpleado(rs.getString(5));
                 emp.setUsuario(rs.getString(6));
-                emp.setCodigoCargo(rs.getInt(7));
-                emp.setCodigoSucursal(rs.getInt(8));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -111,7 +109,7 @@ public class EmpleadoDAO {
     }
     
     public int actualizar(Empleado emp){
-        String sql = "Update empleados set DPIEmpleado = ?, nombreEmpleado = ?, apellidoEmpleado = ?, telefonoEmpleado = ?, usuario = ?, codigoCargo = ?, codigoSucursal = ? where codigoEmpleado = ?";
+        String sql = "Update empleados set DPIEmpleado = ?, nombreEmpleado = ?, apellidoEmpleado = ?, telefonoEmpleado = ?, usuario = ? where codigoEmpleado = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -120,9 +118,7 @@ public class EmpleadoDAO {
             ps.setString(3, emp.getApellidoEmpleado());
             ps.setString(4, emp.getTelefonoEmpleado());
             ps.setString(5, emp.getUsuario());
-            ps.setInt(6, emp.getCodigoCargo());
-            ps.setInt(7, emp.getCodigoSucursal());
-            ps.setInt(8, emp.getCodigoEmpleado());
+            ps.setInt(6, emp.getCodigoEmpleado());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();

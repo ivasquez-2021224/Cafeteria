@@ -77,7 +77,4 @@ public class Cliente {
     public void setCodigoMembresia(int codigoMembresia) {
         this.codigoMembresia = codigoMembresia;
     }
-
-    
-    
 }

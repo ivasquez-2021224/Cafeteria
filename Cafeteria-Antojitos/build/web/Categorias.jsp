@@ -37,6 +37,7 @@
                             <td>CODIGO</td>
                             <td>NOMBRE</td>
                             <td>DESCRIPCION</td>
+                            <td>ACCIONES</td>
                         </tr>
                     </thead>
                     <tbody>
