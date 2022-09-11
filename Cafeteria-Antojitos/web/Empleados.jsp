@@ -33,7 +33,7 @@
                             <input type="text" value="${empleado.getApellidoEmpleado()}" name="txtApellidoEmpleado" class="form-control">
                         </div>                         
                         <div class="form-group">
-                            <label>Telefono;</label>
+                            <label>Telefono:</label>
                             <input type="text" value="${empleado.getTelefonoEmpleado()}" name="txtTelefonoEmpleado" class="form-control">
                         </div>         
                         <div class="form-group">
@@ -42,11 +42,11 @@
                         </div>
                         <div class="form-group">
                             <label>Codigo Cargo:</label>
-                            <input type="text" value="${empleado.getCodigoCargo()}" name="txtCodigoCargo" class="form-control">
+                            <input type="text" name="txtCodigoCargo" class="form-control">
                         </div>    
                         <div class="form-group">
                             <label>Codigo Sucursal</label>
-                            <input type="text" value="${empleado.getCodigoSucursal()}" name="txtCodigoSucursal" class="form-control">
+                            <input type="text" name="txtCodigoSucursal" class="form-control">
                         </div>                       
                         <input type="submit" name="accion" value="AgregarEmpleado" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success"> 

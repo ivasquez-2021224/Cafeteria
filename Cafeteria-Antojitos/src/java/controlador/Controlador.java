@@ -224,15 +224,11 @@ public class Controlador extends HttpServlet {
                     String apellidoEmp = request.getParameter("txtApellidoEmpleado");
                     String telefonoEmp = request.getParameter("txtTelefonoEmpleado");
                     String userEmp = request.getParameter("txtUsuario");
-                    int codCargo = Integer.parseInt(request.getParameter("txtCodigoCargo"));
-                    int codSucursal = Integer.parseInt(request.getParameter("txtCodigoSucursal"));
                     empleado.setDPIEmpleado(DPIEmp);
                     empleado.setNombreEmpleado(nombreEmp);
                     empleado.setApellidoEmpleado(apellidoEmp);
                     empleado.setTelefonoEmpleado(telefonoEmp);
                     empleado.setUsuario(userEmp);
-                    empleado.setCodigoCargo(codCargo);
-                    empleado.setCodigoSucursal(codSucursal);
                     empleado.setCodigoEmpleado(codEmpleado);
                     empleadoDAO.actualizar(empleado);
                     request.getRequestDispatcher("Controlador?menu=Empleados&accion=ListarEmpleados").forward(request, response);                    
