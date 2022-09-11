@@ -64,6 +64,7 @@ public class Controlador extends HttpServlet {
     Membresia membresia = new Membresia();
     MembresiaDAO membresiaDAO = new MembresiaDAO();
     int codEmpleado;
+    int codCliente;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -128,13 +129,30 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Clientes&accion=ListarClientes").forward(request, response);
                     break;
                 case "Editar":
-
+                    codCliente = Integer.parseInt(request.getParameter("codigoCliente"));
+                    Cliente c = clienteDAO.listarCodigoCliente(codCliente);
+                    request.setAttribute("cliente", c);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=ListarClientes").forward(request, response);
                     break;
-                case "Actualizar":
-
+                case "ActualizarCliente":
+                    String DPICli = request.getParameter("txtDPICliente");
+                    String nombresCli= request.getParameter("txtNombresCliente");
+                    String apellidosCli = request.getParameter("txtApellidosCliente");
+                    String direccionCli = request.getParameter("txtDireccionCliente");
+                    String telefonoCli = request.getParameter("txtTelefonoCliente");
+                    cliente.setDPICliente(DPICli);
+                    cliente.setNombreCliente(nombresCli);
+                    cliente.setApellidoCliente(apellidosCli);
+                    cliente.setDireccionCliente(direccionCli);
+                    cliente.setTelefonoCliente(telefonoCli);
+                    cliente.setCodigoCliente(codCliente);
+                    clienteDAO.actualizarCliente(cliente);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=ListarClientes").forward(request, response);
                     break;
                 case "Eliminar":
-
+                    codCliente = Integer.parseInt(request.getParameter("codigoCliente"));
+                    clienteDAO.eliminarCliente(codCliente);
+                    request.getRequestDispatcher("Controlador?menu=Clientes&accion=ListarClientes").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("Clientes.jsp").forward(request, response);

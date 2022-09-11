@@ -22,30 +22,30 @@
                         <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Clientes</h1>
                         <div class="form-group">
                             <label>DPI:</label>
-                            <input type="text" name="txtDPICliente" class="form-control">
+                            <input type="text" value="${cliente.getDPICliente()}" name="txtDPICliente" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Nombres:</label>
-                            <input type="text" name="txtNombresCliente" class="form-control">
+                            <input type="text" value="${cliente.getNombreCliente()}" name="txtNombresCliente" class="form-control">
                         </div>
                          <div class="form-group">
                             <label>Apellidos:</label>
-                            <input type="text" name="txtApellidosCliente" class="form-control">
+                            <input type="text" value="${cliente.getApellidoCliente()}" name="txtApellidosCliente" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Direccion:</label>
-                            <input type="text" name="txtDireccionCliente" class="form-control">
+                            <input type="text" value="${cliente.getDireccionCliente()}" name="txtDireccionCliente" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Teléfono:</label>
-                            <input type="text" name="txtTelefonoCliente" class="form-control">
+                            <input type="text" value="${cliente.getTelefonoCliente()}" name="txtTelefonoCliente" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Membresía:</label>
-                            <input type="text" name="txtMembresiaCliente" class="form-control">
+                            <input type="text"  name="txtMembresiaCliente" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="AgregarCliente" class="btn btn-info">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success" >
+                        <input type="submit" name="accion" value="ActualizarCliente" class="btn btn-success" >
                     </form>
                 </div>
             </div>
@@ -76,8 +76,8 @@
                             <td>${cliente.getTelefonoCliente()}</td>
                             <td>${cliente.getCodigoMembresia()}</td>
                             <td>
-                                <a class="btn btn-warning" href="#">Editar</a>
-                                <a class="btn btn-danger" href="#">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Clientes&accion=Editar&codigoCliente=${cliente.getCodigoCliente()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Clientes&accion=Eliminar&codigoCliente=${cliente.getCodigoCliente()}">Eliminar</a>
                             </td>
                         </tr>
                     </c:forEach>
