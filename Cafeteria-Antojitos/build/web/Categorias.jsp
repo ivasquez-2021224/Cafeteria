@@ -18,6 +18,7 @@
             <div class="card col-sm-5">
                 <div class="card-body">
                     <form action="Controlador?menu=Categorias" method="POST">
+                        <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Categorías</h1>
                         <div class="form-group">
                             <label>Nombre Categoria:</label>
                             <input type="text" name="txtNombreCategoria" class="form-control">
@@ -36,6 +37,7 @@
                             <td>CODIGO</td>
                             <td>NOMBRE</td>
                             <td>DESCRIPCION</td>
+                            <td>ACCIONES</td>
                         </tr>
                     </thead>
                     <tbody>

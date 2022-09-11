@@ -18,6 +18,7 @@
             <div class="card col-sm-4">
                 <div class="card-body">
                     <form action="Controlador?menu=Ventas" method="POST">
+                        <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Ventas</h1>
                         <div class="form-group">
                             <label>Fecha:</label>
                             <input type="text" name="txtFecha" class="form-control">

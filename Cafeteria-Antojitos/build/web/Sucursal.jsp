@@ -18,9 +18,9 @@
             <div class="card col-sm-4">
                 <div class="card-body">
                     <form  action="Controlador?menu=Sucursal" method="POST">
-                        <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Clientes</h1>
+                        <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Sucursales</h1>
                         <div class="form-group">
-                            <label>Nombre sucursal</label>
+                            <label>Nombre sucursal:</label>
                             <input type="text" name="txtNombreSucursal" class="form-control">
                         </div>
                         <div class="form-group">

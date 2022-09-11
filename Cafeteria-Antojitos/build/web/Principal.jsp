@@ -21,7 +21,7 @@
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Home" target="myFrame">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Clientes&accion=ListarCliente" target="myFrame">Clientes</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Clientes&accion=ListarClientes" target="myFrame">Clientes</a>
                   </li>
                   <li class="nav-item">
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Categorias&accion=ListarCategorias" target="myFrame">Categorias</a>
@@ -48,6 +48,9 @@
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=DetalleVenta&accion=ListarDetalle" target="myFrame">Detalle de la venta</a>
                   </li>
                   <li class="nav-item">
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Membresia&accion=ListarMembresia" target="myFrame">Membresia</a>
+                  </li>
+                  <li class="nav-item">
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" class="btn btn-outline-light" href="Controlador?menu=Proveedores&accion=ListarProveedores" target="myFrame">Proveedores</a>
                     </li>
                 </ul>
@@ -69,7 +72,7 @@
                 </div>                  
               </div>
          </nav>
-                    <div class="m-4" style="height: 620px; ">
+                    <div class="m-4" style="height: 655px; ">
                         <iframe name="myFrame" style="height: 100%; width: 100%; border: none;"></iframe>
                     </div>
         
