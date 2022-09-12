@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <title>Productos</title>
     </head>
-     <body style="background-color: #b3b3b1;">
+     <body>
         <div class="d-flex">
             <div class="card col-lg-4">
                 <div class="card-body">
@@ -21,25 +21,25 @@
                        
                         <div class="form-group">
                             <label>NombresProducto:</label>
-                            <input type="text" name="txtNombreProducto" class="form-control">
+                            <input type="text" value="${producto.getNombreProducto()}" name="txtNombreProducto" class="form-control">
                          </div> 
                         <div class="form-group">
                             <label>Precio:</label>
-                            <input type="text" name="txtPrecio" class="form-control">
+                            <input type="text" value="${producto.getPrecio()}" name="txtPrecio" class="form-control">
                          </div>   
                         <div class="form-group">
                             <label>Stock:</label>
-                            <input type="text" name="txtStock" class="form-control">
+                            <input type="text" value="${producto.getStock()}" name="txtStock" class="form-control">
                          </div>   <div class="form-group">
                             <label>CodigoMarca:</label>
-                            <input type="text" name="txtCodigoMarca" class="form-control">
+                            <input type="text" value="${producto.getCodigoMarca()}" name="txtCodigoMarca" class="form-control">
                          </div>  
                          <div class="form-group">
                             <label>CodigoCategoria:</label>
-                            <input type="text" name="txtCodigoCategoria" class="form-control">
+                            <input type="text" value="${producto.getCodigoCategoria()}" name="txtCodigoCategoria" class="form-control">
                          </div>
                          <input type="submit" name="accion" value="AgregarProducto" class="btn btn-info">
-                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+                         <input type="submit" name="accion" value="ActualizarProducto" class="btn btn-success">
                     </form>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                         </tr>                      
                     </thead>
                     <tbody>
-                        <c:forEach var="producto" items="${Productos}">
+                        <c:forEach var="producto" items="${productos}">
                             
                         
                         <tr>
@@ -69,8 +69,8 @@
                           <td>${producto.getCodigoMarca()}</td> 
                           <td>${producto.getCodigoCategoria()}</td>
                           <td>
-                              <a class="btn btn-warning" href="" >Editar</a>
-                              <a class="btn btn-danger" href="">Eliminar</a>  
+                              <a class="btn btn-warning" href="Controlador?menu=Productos&accion=EditarProducto&codigoProducto=${producto.getCodigoProducto()}" >Editar</a>
+                              <a class="btn btn-danger" href="Controlador?menu=Productos&accion=EliminarProducto&codigoProducto=${producto.getCodigoProducto()}">Eliminar</a>  
                           </td> 
                         </tr>
                         </c:forEach>
@@ -87,3 +87,4 @@
 
     </body>
 </html>
+
