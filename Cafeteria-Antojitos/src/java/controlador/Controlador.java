@@ -65,6 +65,7 @@ public class Controlador extends HttpServlet {
     MembresiaDAO membresiaDAO = new MembresiaDAO();
     int codEmpleado;
     int codCliente;
+    int codVenta;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -183,7 +184,7 @@ public class Controlador extends HttpServlet {
                     break;
                 case "AgregarVentas":
                     String fecha = request.getParameter("txtFecha");
-                    Double monto = (Double.parseDouble(request.getParameter("txtMonto")));
+                    Double monto = Double.parseDouble(request.getParameter("txtMonto"));
                     String numSerie = request.getParameter("txtNumeroSerie");
                     int codCliente = Integer.parseInt(request.getParameter("txtCodigoCliente"));
                     int codEmpleado = Integer.parseInt(request.getParameter("txtCodigoEmpleado"));
@@ -196,13 +197,27 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Ventas&accion=ListarVentas").forward(request, response);
                     break;
                 case "Editar":
-
+                    codVenta = Integer.parseInt(request.getParameter("codigoVenta"));
+                    Ventas v = ventasDAO.listarCodigoVenta(codVenta);
+                    request.setAttribute("venta", v);
+                    request.getRequestDispatcher("Controlador?menu=Ventas&accion=ListarVentas").forward(request, response);
                     break;
                 case "Actualizar":
-
+                    String fechaVen = request.getParameter("txtFecha");
+                    Double montoVen = Double.parseDouble(request.getParameter("txtMonto"));
+                    String numSerieVen = request.getParameter("txtNumeroSerie");
+                    ventas.setFecha(fechaVen);
+                    ventas.setMonto(montoVen);
+                    ventas.setNumeroSerie(numSerieVen);
+                    ventas.setCodigoVenta(codVenta);
+                    ventasDAO.actualizarVenta(ventas);
+                    request.getRequestDispatcher("Controlador?menu=Ventas&accion=ListarVentas").forward(request, response);
+                    System.out.println(fechaVen + montoVen + numSerieVen);
                     break;
                 case "Eliminar":
-
+                    codVenta = Integer.parseInt(request.getParameter("codigoVenta"));
+                    ventasDAO.eliminarVentas(codVenta);
+                    request.getRequestDispatcher("Controlador?menu=Ventas&accion=ListarVentas").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("Ventas.jsp").forward(request, response);
