@@ -66,6 +66,7 @@ public class Controlador extends HttpServlet {
     int codEmpleado;
     int codCliente;
     int codVenta;
+    int codProducto;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -365,7 +366,7 @@ public class Controlador extends HttpServlet {
             switch (accion) {
                 case "ListarProducto":
                     List listaProductos = productoDAO.listarProducto();
-                    request.setAttribute("Productos", listaProductos);
+                    request.setAttribute("productos", listaProductos);
                     break;
                 case "AgregarProducto":
                     String Nombre = request.getParameter("txtNombreProducto");
@@ -381,6 +382,30 @@ public class Controlador extends HttpServlet {
                     productoDAO.agregar(producto);
                     request.getRequestDispatcher("Controlador?menu=Productos&accion=ListarProducto").forward(request, response);
 
+                    break;
+                case "EditarProducto":
+                    codProducto =Integer.parseInt(request.getParameter("codigoProducto"));
+                    Productos e = productoDAO.listarCodigoProducto(codProducto);
+                    request.setAttribute("producto", e);
+                    request.getRequestDispatcher("Controlador?menu=Productos&accion=ListarProducto").forward(request, response);
+                    break;
+                    
+                case "ActualizarProducto":
+                    String nomPro = request.getParameter("txtNombreProducto");
+                    double precioPro = Double.parseDouble(request.getParameter("txtPrecio"));
+                    int stockPro = Integer.parseInt(request.getParameter("txtStock"));
+                    producto.setNombreProducto(nomPro);
+                    producto.setPrecio(precioPro);
+                    producto.setStock(stockPro);
+                    producto.setCodigoProducto(codProducto);                  
+                    productoDAO.actualizarProducto(producto);
+                    request.getRequestDispatcher("Controlador?menu=Productos&accion=ListarProducto").forward(request, response);
+                    break;
+                    
+                case "EliminarProducto":
+                    codProducto = Integer.parseInt(request.getParameter("codigoProducto"));
+                    productoDAO.eliminarProducto(codProducto);
+                    request.getRequestDispatcher("Controlador?menu=Productos&accion=ListarProducto").forward(request, response);
                     break;
 
             }
