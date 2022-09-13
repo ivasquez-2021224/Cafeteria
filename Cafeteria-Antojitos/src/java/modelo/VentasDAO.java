@@ -37,6 +37,7 @@ public class VentasDAO {
             }
         }catch(Exception e){
             e.printStackTrace();
+            System.out.println("Error en VentasDAO en el metodo listarVentas  "+e);
         }
         return listaVenta;
     }
@@ -63,9 +64,9 @@ public class VentasDAO {
     
     
     //BUSCAR POR CÓDIGO
-    public Ventas listarCodigoVenta (int id){
+    public Ventas listarCodigoVenta (int codVenta){
         Ventas ven = new Ventas();
-        String sql = "select * from Ventas where codigoVenta = "+id;
+        String sql = "select * from Ventas where codigoVenta = "+codVenta;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -74,11 +75,10 @@ public class VentasDAO {
                 ven.setFecha(rs.getString(2));
                 ven.setMonto(rs.getDouble(3));
                 ven.setNumeroSerie(rs.getString(4));
-                ven.setCodigoCliente(rs.getInt(4));
-                ven.setCodigoEmpleado(rs.getInt(6));
             }
         }catch(Exception e){
             e.printStackTrace();
+            System.out.println("Error en VentasDAO en el metodo listarCodigoVenta  "+e);
         }
         return ven;
     }
@@ -86,19 +86,18 @@ public class VentasDAO {
     
     //MÉTODO PARA EDITAR
     public int actualizarVenta (Ventas ven){
-        String sql = "update Ventas set fecha = ?, monto = ?, numeroSerie = ?, codigoCliente = ?, codigoEmpleado =? where codigoVenta = ?";
+        String sql = "update Ventas set fecha = ?, monto = ?, numeroSerie = ? where codigoVenta = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, ven.getFecha());
             ps.setDouble(2, ven.getMonto());
             ps.setString(3, ven.getNumeroSerie());
-            ps.setInt(4, ven.getCodigoCliente());
-            ps.setInt(5, ven.getCodigoEmpleado());
-            ps.setInt(6, ven.getCodigoVenta());
+            ps.setInt(4, ven.getCodigoVenta());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
+            System.out.println("Error en VentasDAO en el metodo actualizarVenta  "+e);
         }
         return resp;
     }
@@ -113,6 +112,7 @@ public class VentasDAO {
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
+            System.out.println("Error en VentasDAO en el metodo eliminarVentas  "+e);
         }
     }
 }

@@ -24,7 +24,7 @@ public class ProveedorDAO {
             while(rs.next()){
                 Proveedor pv = new Proveedor();
                 pv.setCodigoProveedor(rs.getInt(1));
-                pv.setNombresProveedor(rs.getString(2));
+                pv.setNombreProveedor(rs.getString(2));
                 pv.setDireccion(rs.getString(3));
                 pv.setTelefono(rs.getString(4));
                 listaProveedor.add(pv);
@@ -37,11 +37,11 @@ public class ProveedorDAO {
     }
     
     public int agregarProveedor(Proveedor pv){
-        String sql = "Insert into Proveedores(nombresProveedor, direccion, telefono) values (?, ?, ?)";
+        String sql = "Insert into Proveedores(nombreProveedor, direccion, telefono) values (?, ?, ?)";
             try{
                 con = cn.Conexion();
                 ps = con.prepareStatement(sql);
-                ps.setString(1, pv.getNombresProveedor());
+                ps.setString(1, pv.getNombreProveedor());
                 ps.setString(2, pv.getDireccion());
                 ps.setString(3, pv.getTelefono());
                 ps.executeUpdate();
@@ -60,7 +60,7 @@ public class ProveedorDAO {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()){
-                hp.setNombresProveedor(rs.getString(2));
+                hp.setNombreProveedor(rs.getString(2));
                 hp.setDireccion(rs.getString(3));
                 hp.setTelefono(rs.getString(4));
             }
@@ -71,11 +71,11 @@ public class ProveedorDAO {
     }
     
     public int actualizar(Proveedor hp){
-        String sql = "Update proveedores set nombresProveedor = ?, direccion = ?, telefono = ?";
+        String sql = "Update proveedores set nombreProveedor = ?, direccion = ?, telefono = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, hp.getNombresProveedor());
+            ps.setString(1, hp.getNombreProveedor());
             ps.setString(2, hp.getDireccion());
             ps.setString(3, hp.getTelefono());
             ps.setInt(4, hp.getCodigoProveedor());
