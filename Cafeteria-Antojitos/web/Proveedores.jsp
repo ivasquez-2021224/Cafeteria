@@ -18,12 +18,13 @@
             <div class="card col-lg-4"> 
                 <div class="card-body">
                     <form action="Controlador?menu=Proveedores" method="POST">
+                        <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Proveedores</h1>
                         <div class="form-group">
                             <label>Nombres:</label>
-                            <input type="text" name="txtNombresProveedor" class="form-control">
-                            <label>DIRECCION:</label>
+                            <input type="text" name="txtNombreProveedor" class="form-control">
+                            <label>Dirección:</label>
                             <input type="text" name="txtDireccionProveedor" class="form-control">
-                            <label>TELEFONO:</label>
+                            <label>Teléfono:</label>
                             <input type="text" name="txtTelefonoProveedor" class="form-control">
                         </div>
                         <label>ACCIONES</label>
@@ -48,7 +49,7 @@
                         <c:forEach var="proveedor" items="${proveedores}">
                         <tr> 
                         <td>${proveedor.getCodigoProveedor()}</td>
-                        <td>${proveedor.getNombresProveedor()}</td>
+                        <td>${proveedor.getNombreProveedor()}</td>
                         <td>${proveedor.getDireccion()}</td>
                         <td>${proveedor.getTelefono()}</td>
                         <td>

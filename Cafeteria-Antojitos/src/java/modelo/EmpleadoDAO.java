@@ -26,7 +26,8 @@ public class EmpleadoDAO {
             while(rs.next()){
                 empleado.setCodigoEmpleado(rs.getInt("codigoEmpleado"));
                 empleado.setDPIEmpleado(rs.getString("DPIEmpleado"));
-                empleado.setNombresEmpleado(rs.getString("nombresEmpleado"));
+                empleado.setNombreEmpleado(rs.getString("nombreEmpleado"));
+                empleado.setApellidoEmpleado(rs.getString("apellidoEmpleado"));
                 empleado.setTelefonoEmpleado(rs.getString("telefonoEmpleado"));
                 empleado.setUsuario(rs.getString("usuario"));
                 empleado.setCodigoCargo(rs.getInt("codigoCargo"));
@@ -50,11 +51,12 @@ public class EmpleadoDAO {
                 Empleado em = new Empleado();
                 em.setCodigoEmpleado(rs.getInt(1));
                 em.setDPIEmpleado(rs.getString(2));
-                em.setNombresEmpleado(rs.getString(3));
-                em.setTelefonoEmpleado(rs.getString(4));
-                em.setUsuario(rs.getString(5));
-                em.setCodigoCargo(rs.getInt(6));
-                em.setCodigoSucursal(rs.getInt(7));
+                em.setNombreEmpleado(rs.getString(3));
+                em.setApellidoEmpleado(rs.getString(4));
+                em.setTelefonoEmpleado(rs.getString(5));
+                em.setUsuario(rs.getString(6));
+                em.setCodigoCargo(rs.getInt(7));
+                em.setCodigoSucursal(rs.getInt(8));
                 listaEmpleado.add(em);
             }
         }catch(Exception e){
@@ -66,16 +68,17 @@ public class EmpleadoDAO {
     }
     
     public int agregar(Empleado emp){
-        String  sql = "insert into Empleados (DPIEmpleado, nombresEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) values (?, ?, ?, ?, ?, ?)";
+        String  sql = "insert into Empleados (DPIEmpleado, nombreEmpleado, apellidoEmpleado, telefonoEmpleado, usuario, codigoCargo, codigoSucursal) values (?, ?, ?, ?, ?, ?, ?)";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, emp.getDPIEmpleado());
-            ps.setString(2, emp.getNombresEmpleado());
-            ps.setString(3, emp.getTelefonoEmpleado());
-            ps.setString(4, emp.getUsuario());
-            ps.setInt(5, emp.getCodigoCargo());
-            ps.setInt(6, emp.getCodigoSucursal());
+            ps.setString(2, emp.getNombreEmpleado());
+            ps.setString(3, emp.getApellidoEmpleado());
+            ps.setString(4, emp.getTelefonoEmpleado());
+            ps.setString(5, emp.getUsuario());
+            ps.setInt(6, emp.getCodigoCargo());
+            ps.setInt(7, emp.getCodigoSucursal());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
@@ -93,11 +96,10 @@ public class EmpleadoDAO {
             rs = ps.executeQuery();
             while(rs.next()){
                 emp.setDPIEmpleado(rs.getString(2));
-                emp.setNombresEmpleado(rs.getString(3));
-                emp.setTelefonoEmpleado(rs.getString(4));
-                emp.setUsuario(rs.getString(5));
-                emp.setCodigoCargo(rs.getInt(6));
-                emp.setCodigoSucursal(rs.getInt(7));
+                emp.setNombreEmpleado(rs.getString(3));
+                emp.setApellidoEmpleado(rs.getString(4));
+                emp.setTelefonoEmpleado(rs.getString(5));
+                emp.setUsuario(rs.getString(6));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -107,17 +109,16 @@ public class EmpleadoDAO {
     }
     
     public int actualizar(Empleado emp){
-        String sql = "Update empleados set DPIEmpleado = ?, nombresEmpleado = ?, telefonoEmpleado = ?, usuario = ?, codigoCargo = ?, codigoSucursal = ? where codigoEmpleado = ?";
+        String sql = "Update empleados set DPIEmpleado = ?, nombreEmpleado = ?, apellidoEmpleado = ?, telefonoEmpleado = ?, usuario = ? where codigoEmpleado = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, emp.getDPIEmpleado());
-            ps.setString(2, emp.getNombresEmpleado());
-            ps.setString(3, emp.getTelefonoEmpleado());
-            ps.setString(4, emp.getUsuario());
-            ps.setInt(5, emp.getCodigoCargo());
-            ps.setInt(6, emp.getCodigoSucursal());
-            ps.setInt(7, emp.getCodigoEmpleado());
+            ps.setString(2, emp.getNombreEmpleado());
+            ps.setString(3, emp.getApellidoEmpleado());
+            ps.setString(4, emp.getTelefonoEmpleado());
+            ps.setString(5, emp.getUsuario());
+            ps.setInt(6, emp.getCodigoEmpleado());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();

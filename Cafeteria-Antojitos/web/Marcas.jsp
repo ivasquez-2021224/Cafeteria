@@ -19,6 +19,7 @@
             <div class="card col-lg-4"> 
                 <div class="card-body">
                     <form action="Controlador?menu=Marcas" method="POST">
+                        <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Marcas</h1>
                         <div class="form-group">
                             <label>Nombre Marca:</label>
                             <input type="text" name="txtNombresMarca" class="form-control">

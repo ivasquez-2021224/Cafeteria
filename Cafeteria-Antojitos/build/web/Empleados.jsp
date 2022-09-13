@@ -14,26 +14,31 @@
 
         <title></title>
     </head>
-    <body>
+    <body style="background-color: #b3b3b1;">
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
                     <form action="Controlador?menu=Empleados" method="POST">
+                        <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Empleados</h1>
                         <div class="form-group">
                             <label>DPI:</label>
-                            <input type="text" name="txtDPIEmpleado" class="form-control">
+                            <input type="text" value="${empleado.getDPIEmpleado()}" name="txtDPIEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Nombres:</label>
-                            <input type="text" name="txtNombresEmpleado" class="form-control">
+                            <label>Nombre:</label>
+                            <input type="text" value="${empleado.getNombreEmpleado()}" name="txtNombreEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Telefono;</label>
-                            <input type="text" name="txtTelefonoEmpleado" class="form-control">
+                            <label>Apellido:</label>
+                            <input type="text" value="${empleado.getApellidoEmpleado()}" name="txtApellidoEmpleado" class="form-control">
+                        </div>                         
+                        <div class="form-group">
+                            <label>Telefono:</label>
+                            <input type="text" value="${empleado.getTelefonoEmpleado()}" name="txtTelefonoEmpleado" class="form-control">
                         </div>         
                         <div class="form-group">
                             <label>Usuario:</label>
-                            <input type="text" name="txtUsuario" class="form-control">
+                            <input type="text" value="${empleado.getUsuario()}" name="txtUsuario" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Codigo Cargo:</label>
@@ -55,10 +60,12 @@
                             <td>CODIGO</td>
                             <td>DPI</td>
                             <td>NOMBRES</td>
+                            <td>APELLIDO</td>
                             <td>TELEFONO</td>
                             <td>USUARIO</td>
                             <td>CODIGO CARGO</td>
                             <td>CODIGO SUCURSAL</td>
+                            <td>ACCIONES</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,14 +73,15 @@
                         <tr>
                             <td>${empleado.getCodigoEmpleado()}</td>
                             <td>${empleado.getDPIEmpleado()}</td>
-                            <td>${empleado.getNombresEmpleado()}</td>
+                            <td>${empleado.getNombreEmpleado()}</td>
+                            <td>${empleado.getApellidoEmpleado()}</td>
                             <td>${empleado.getTelefonoEmpleado()}</td>
                             <td>${empleado.getUsuario()}</td>
                             <td>${empleado.getCodigoCargo()}</td>
                             <td>${empleado.getCodigoSucursal()}</td>
                             <td>
-                                <a class="btn btn-warning" href="#">Editar</a>
-                                <a class="btn btn-danger" href="#">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Empleados&accion=Editar&codigoEmpleado=${empleado.getCodigoEmpleado()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Empleados&accion=Eliminar&codigoEmpleado=${empleado.getCodigoEmpleado()}">Eliminar</a>
                             </td>
                         </tr>                            
                         </c:forEach>

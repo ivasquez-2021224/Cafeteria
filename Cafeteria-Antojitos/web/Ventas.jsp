@@ -20,26 +20,26 @@
                     <form action="Controlador?menu=Ventas" method="POST">
                         <div class="form-group">
                             <label>Fecha:</label>
-                            <input type="text" name="txtFecha" class="form-control">
+                            <input type="text" value="${venta.getFecha()}" name="txtFecha" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Monto:</label>
-                            <input type="text" name="txtMonto" class="form-control">
+                            <input type="text" value="${venta.getMonto()}" name="txtMonto" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Número De Serie:</label>
-                            <input type="text" name="txtNumeroSerie" class="form-control">
+                            <input type="text" value="${venta.getNumeroSerie()}" name="txtNumeroSerie" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Código Cliente:</label>
-                            <input type="text" name="txtCodigoCliente" class="form-control">
+                            <input type="text" value="${venta.getCodigoCliente()}" name="txtCodigoCliente" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Código Empleado:</label>
-                            <input type="text" name="txtCodigoEmpleado" class="form-control">
+                            <input type="text" value="${venta.getCodigoEmpleado()}" name="txtCodigoEmpleado" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="AgregarVentas" class="btn btn-info">
-                        <input type="submit" name="accion" value="ActualizarVentas" class="btn btn-success">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
@@ -58,17 +58,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="ventas" items="${ventas}">
+                        <c:forEach var="venta" items="${ventas}">
                             <tr style="height: 30px;">
-                                <td>${ventas.getCodigoVenta()}</td>
-                                <td>${ventas.getFecha()}</td>
-                                <td>${ventas.getMonto()}</td>
-                                <td>${ventas.getNumeroSerie()}</td>
-                                <td>${ventas.getCodigoCliente()}<td>
-                                <td>${ventas.getCodigoEmpleado()}</td>
+                                <td>${venta.getCodigoVenta()}</td>
+                                <td>${venta.getFecha()}</td>
+                                <td>${venta.getMonto()}</td>
+                                <td>${venta.getNumeroSerie()}</td>
+                                <td>${venta.getCodigoCliente()}<td>
+                                <td>${venta.getCodigoEmpleado()}</td>
                                 <td>
-                                    <a style="text-decoration: none; padding: 0px; padding-left: 8px; padding-right: 8px; font-family: helvetica; font-weight: 100; font-size: 15px; font-style: italic; border-radius: 10px;" class="btn btn-warning" href="">Editar</a>
-                                    <a style="text-decoration: none; padding: 0px; padding-left: 8px; padding-right: 8px; font-family: helvetica; font-weight: 100; font-size: 15px; font-style: italic; border-radius: 10px;" class="btn btn-danger" href="">Eliminar</a>
+                                    <a style="text-decoration: none; padding: 0px; padding-left: 8px; padding-right: 8px; font-family: helvetica; font-weight: 100; font-size: 15px; font-style: italic; border-radius: 10px;" class="btn btn-warning" href="Controlador?menu=Ventas&accion=Editar&codigoVenta=${venta.getCodigoVenta()}">Editar</a>
+                                    <a style="text-decoration: none; padding: 0px; padding-left: 8px; padding-right: 8px; font-family: helvetica; font-weight: 100; font-size: 15px; font-style: italic; border-radius: 10px;" class="btn btn-danger" href="Controlador?menu=Ventas&accion=Eliminar&codigoVenta=${venta.getCodigoVenta()}">Eliminar</a>
                                 </td>
                             </tr>
                         </c:forEach>
