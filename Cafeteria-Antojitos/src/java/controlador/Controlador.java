@@ -68,6 +68,7 @@ public class Controlador extends HttpServlet {
     int codVenta;
     int codProducto;
     int codCategoria;
+    int codMarca;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -280,7 +281,7 @@ public class Controlador extends HttpServlet {
         } else if (menu.equals("Marcas")) {
             switch (accion) {
 
-                case "ListarMarcas":
+               case "ListarMarcas":
                     List listaMarca = marcasDAO.listarMarcas();
                     request.setAttribute("marcas", listaMarca);
                     break;
@@ -292,18 +293,36 @@ public class Controlador extends HttpServlet {
                     marcas.setCodigoProveedor(codProveedor);
                     marcasDAO.agregarMarcas(marcas);
                     request.getRequestDispatcher("Controlador?menu=Marcas&accion=ListarMarcas").forward(request, response);
+                    
 
                     break;
                 case "Editar":
+                    codMarca = Integer.parseInt(request.getParameter("codigoMarca"));
+                    request.setAttribute("read", "readonly");
+                    Marcas mar = marcasDAO.listarCodigoMarcas(codMarca);
+                    request.setAttribute("marca", mar);
+                    request.getRequestDispatcher("Controlador?menu=Marcas&accion=ListarMarcas").forward(request, response);
+                    
                     break;
                 case "Actualizar":
+                    String nomMarca = request.getParameter("txtNombresMarca");
+//                    String cdProveedor = request.getParameter("txtCodigoProveedor");
+                    marcas.setNombreMarca(nomMarca);
+//                    marcas.setCodigoProveedor(cdProveedor);
+                    marcas.setCodigoMarca(codMarca);
+                    marcasDAO.actualizarMarcas(marcas);
+                    request.getRequestDispatcher("Controlador?menu=Marcas&accion=ListarMarcas").forward(request, response);
+                    
                     break;
                 case "Eliminar":
+                    codMarca = Integer.parseInt(request.getParameter("codigoMarca"));
+                    marcasDAO.eliminarMarcas(codMarca);
+                    request.getRequestDispatcher("Controlador?menu=Marcas&accion=ListarMarcas").forward(request, response);
                     break;
 
             }
             request.getRequestDispatcher("Marcas.jsp").forward(request, response);
-        } else if (menu.equals("Categorias")) {
+        }else if (menu.equals("Categorias")) {
             switch (accion) {
                 case "ListarCategorias":
                     List listaCategorias = categoriasDAO.listar();
@@ -481,7 +500,7 @@ public class Controlador extends HttpServlet {
         }
 
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
