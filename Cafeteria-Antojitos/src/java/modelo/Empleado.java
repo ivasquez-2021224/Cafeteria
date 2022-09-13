@@ -87,4 +87,9 @@ public class Empleado {
     public void setCodigoSucursal(int codigoSucursal) {
         this.codigoSucursal = codigoSucursal;
     }
+
+    public String getUsuarioImg() {
+        String usuarioImg = "img/"+usuario+".png";
+        return usuarioImg;
+    }    
 }

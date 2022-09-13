@@ -70,8 +70,8 @@ public class ProveedorDAO {
         return hp;
     }
     
-    public int actualizar(Proveedor hp){
-        String sql = "Update proveedores set nombreProveedor = ?, direccion = ?, telefono = ?";
+    public int actualizarProveedor(Proveedor hp){
+        String sql = "Update proveedores set nombreProveedor = ?, direccion = ?, telefono = ? where codigoProveedor = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -86,7 +86,7 @@ public class ProveedorDAO {
         return ph;
     }
     
-    public void eliminar(int id){
+    public void eliminarProveedor(int id){
         String sql = "Delete from proveedores where codigoProveedor =" +id;
         try{
         con = cn.Conexion();

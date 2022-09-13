@@ -21,9 +21,9 @@
                         <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Categorías</h1>
                         <div class="form-group">
                             <label>Nombre Categoria:</label>
-                            <input type="text" name="txtNombreCategoria" class="form-control">
+                            <input type="text" value="${categoria.getNombreCategoria()}" name="txtNombreCategoria" class="form-control">
                             <label>Descripcion Categoria:</label>
-                            <input type="text" name="txtDescripcionCategoria" class="form-control">
+                            <input type="text" value="${categoria.getDescripcionCategoria()}" name="txtDescripcionCategoria" class="form-control">
                         </div>
                         <input type="submit" name="accion" value="AgregarCategorias" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
@@ -47,8 +47,8 @@
                             <td>${categorias.getNombreCategoria()}</td>
                             <td>${categorias.getDescripcionCategoria()}</td>
                             <td>
-                                <a class="btn btn-warning" href="">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Categorias&accion=Editar&codigoCategoria=${categorias.getCodigoCategoria()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Categorias&accion=Eliminar&codigoCategoria=${categorias.getCodigoCategoria()}">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach>
@@ -63,4 +63,3 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     </body>
 </html>
-

@@ -65,7 +65,7 @@ public class ClienteDAO {
     //BUSCAR CLIENTE
     public Cliente listarCodigoCliente(int codCliente){
         Cliente  cliente = new Cliente();
-        String sql = "Select * from Cliente where codigoCliente ="+codCliente;
+        String sql = "Select * from Clientes where codigoCliente ="+codCliente;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -76,7 +76,6 @@ public class ClienteDAO {
                 cliente.setApellidoCliente(rs.getString(4));
                 cliente.setDireccionCliente(rs.getString(5));
                 cliente.setTelefonoCliente(rs.getString(6));
-                cliente.setCodigoMembresia(rs.getInt(7));
             }
         }catch(Exception e){
             e.printStackTrace();
@@ -88,7 +87,7 @@ public class ClienteDAO {
     
     //Metodo para actualizar clientes
     public int actualizarCliente(Cliente cliente){
-        String sql = "Update Cliente  set DPICliente=?, nombreCliente=?, apellidoCliente=?, direccionCliente=?, telefonoCliente=?, codigoMembresia=? where codigoCliente=?";
+        String sql = "Update Clientes  set DPICliente=?, nombreCliente=?, apellidoCliente=?, direccionCliente=?, telefonoCliente=? where codigoCliente=?";
         try{
             con=cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -97,11 +96,11 @@ public class ClienteDAO {
             ps.setString(3, cliente.getApellidoCliente());
             ps.setString(4, cliente.getDireccionCliente());
             ps.setString(5, cliente.getTelefonoCliente());
-            ps.setInt(6, cliente.getCodigoMembresia());
+            ps.setInt(6, cliente.getCodigoCliente());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
-            System.out.println("Error en el metodo editar cliente (Cliente DAO): "+e);
+            System.out.println("Error en el metodo actualizar cliente (Cliente DAO): "+e);
         }
         
         return resp;
@@ -109,7 +108,7 @@ public class ClienteDAO {
     
     //Metodo para eliminar
     public void eliminarCliente(int codCliente){
-        String sql = "Delete from Cliente where codigoCliente ="+codCliente;
+        String sql = "Delete from Clientes where codigoCliente ="+codCliente;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

@@ -22,23 +22,23 @@
                         <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Empleados</h1>
                         <div class="form-group">
                             <label>DPI:</label>
-                            <input type="text" name="txtDPIEmpleado" class="form-control">
+                            <input type="text" value="${empleado.getDPIEmpleado()}" name="txtDPIEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Nombre:</label>
-                            <input type="text" name="txtNombreEmpleado" class="form-control">
+                            <input type="text" value="${empleado.getNombreEmpleado()}" name="txtNombreEmpleado" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Apellido:</label>
-                            <input type="text" name="txtApellidoEmpleado" class="form-control">
+                            <input type="text" value="${empleado.getApellidoEmpleado()}" name="txtApellidoEmpleado" class="form-control">
                         </div>                         
                         <div class="form-group">
-                            <label>Telefono;</label>
-                            <input type="text" name="txtTelefonoEmpleado" class="form-control">
+                            <label>Telefono:</label>
+                            <input type="text" value="${empleado.getTelefonoEmpleado()}" name="txtTelefonoEmpleado" class="form-control">
                         </div>         
                         <div class="form-group">
                             <label>Usuario:</label>
-                            <input type="text" name="txtUsuario" class="form-control">
+                            <input type="text" value="${empleado.getUsuario()}" name="txtUsuario" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Codigo Cargo:</label>
@@ -80,8 +80,8 @@
                             <td>${empleado.getCodigoCargo()}</td>
                             <td>${empleado.getCodigoSucursal()}</td>
                             <td>
-                                <a class="btn btn-warning" href="#">Editar</a>
-                                <a class="btn btn-danger" href="#">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Empleados&accion=Editar&codigoEmpleado=${empleado.getCodigoEmpleado()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Empleados&accion=Eliminar&codigoEmpleado=${empleado.getCodigoEmpleado()}">Eliminar</a>
                             </td>
                         </tr>                            
                         </c:forEach>

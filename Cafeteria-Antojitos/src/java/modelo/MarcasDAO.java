@@ -53,7 +53,7 @@ public class MarcasDAO {
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
-            System.out.println("No se pudo agregar el registro");
+            System.out.println("No se pudo agregar el registro"+e);
         }
         
         
@@ -63,37 +63,40 @@ public class MarcasDAO {
     
     
     //BUSCAR POR CODIGO
-    public Marcas listarCodigoMarcas (int codMarca){
-        Marcas ma = new Marcas();
-        String sql = "Select * from marcas where codigoMarca = " +codMarca;
+    public Marcas listarCodigoMarcas (int codMar){
+        Marcas mar = new Marcas();
+        String sql = "Select * from Marcas where codigoMarca = " +codMar;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-            while (rs.next()){
-                ma.setNombreMarca(rs.getString(2));
-                ma.setCodigoProveedor(rs.getInt(3));
+            while(rs.next()){
+                mar.setNombreMarca(rs.getString(2));
+//                mar.setCodigoProveedor(rs.getInt(3));
             }
         }catch(Exception e){
             e.printStackTrace();
+            System.out.println("Error en Listar CodigoMarcas");
         }
-        
-        return ma;
+            
+        return mar;
     }
     
     
     
     //MÉTODO PARA EDITAR
-    public int actualizarMarcas(Marcas ma){
-        String sql = "Update marca set nombreMarca = ?, codigoProveedoor = ?";
+    public int actualizarMarcas(Marcas mar){
+        String sql = "Update marcas set nombreMarca = ?  where codigoMarca = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
-            ps.setString(1, ma.getNombreMarca());
-            ps.setInt(2, ma.getCodigoProveedor());
+            ps.setString(1, mar.getNombreMarca());
+//            ps.setInt(2, mar.getCodigoProveedor());
+            ps.setInt(2, mar.getCodigoMarca());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
+            System.out.println("Error metodo  actualizarMarcas"+e);
         }
         
         return resp;
@@ -103,13 +106,14 @@ public class MarcasDAO {
     
     //MÉTODO PARA ELIMINAR
     public void eliminarMarcas(int codMarca){
-        String sql = "delete from Marcas where codigoMarca = "+codMarca;
+        String sql = "delete from marcas where codigoMarca = "+codMarca;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
+            System.out.println("Error en eliminarMarcas"+e);
         }
     }
 }
