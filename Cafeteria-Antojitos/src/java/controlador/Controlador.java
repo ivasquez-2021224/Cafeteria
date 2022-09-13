@@ -67,6 +67,7 @@ public class Controlador extends HttpServlet {
     int codCliente;
     int codVenta;
     int codProducto;
+    int codCategoria;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -317,13 +318,24 @@ public class Controlador extends HttpServlet {
                     request.getRequestDispatcher("Controlador?menu=Categorias&accion=ListarCategorias").forward(request, response);
                     break;
                 case "Editar":
-
+                    codCategoria = Integer.parseInt(request.getParameter("codigoCategoria"));
+                    Categorias c = categoriasDAO.listarCodigoCategoria(codCategoria);
+                    request.setAttribute("categoria", c);
+                    request.getRequestDispatcher("Controlador?menu=Categorias&accion=ListarCategorias").forward(request, response);
                     break;
                 case "Actualizar":
-
+                    String nombreCat = request.getParameter("txtNombreCategoria");
+                    String descripcionCat = request.getParameter("txtDescripcionCategoria");
+                    categorias.setNombreCategoria(nombreCat);
+                    categorias.setDescripcionCategoria(descripcionCat);
+                    categorias.setCodigoCategoria(codCategoria);
+                    categoriasDAO.actualizar(categorias);
+                    request.getRequestDispatcher("Controlador?menu=Categorias&accion=ListarCategorias").forward(request, response);
                     break;
                 case "Eliminar":
-
+                    codCategoria = Integer.parseInt(request.getParameter("codigoCategoria"));
+                    categoriasDAO.eliminar(codCategoria);
+                    request.getRequestDispatcher("Controlador?menu=Categorias&accion=ListarCategorias").forward(request, response);
                     break;
             }
             request.getRequestDispatcher("Categorias.jsp").forward(request, response);

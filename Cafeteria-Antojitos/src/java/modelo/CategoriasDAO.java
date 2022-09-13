@@ -49,9 +49,9 @@ public class CategoriasDAO {
         return resp;
     }
     
-    public Categorias listarCodigoMarca(int id){
+    public Categorias listarCodigoCategoria(int codCategoria){
         Categorias c = new Categorias();
-        String sql = "Select * from Categorias where codigoCategorias = "+id;
+        String sql = "select * from Categorias where codigoCategoria ="+codCategoria;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -73,6 +73,7 @@ public class CategoriasDAO {
             ps = con.prepareStatement(sql);
             ps.setString(1, c.getNombreCategoria());
             ps.setString(2, c.getDescripcionCategoria());
+            ps.setInt(3, c.getCodigoCategoria());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
@@ -80,8 +81,8 @@ public class CategoriasDAO {
         return resp;
     }
     
-    public void eliminar (int id){
-        String sql = "delete from Categoria where codigoCategoria = " + id;
+    public void eliminar (int codCategoria){
+        String sql = "delete from Categorias where codigoCategoria="+codCategoria;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
