@@ -69,6 +69,7 @@ public class Controlador extends HttpServlet {
     int codProducto;
     int codCategoria;
     int codMarca;
+    int codProveedor;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -174,6 +175,30 @@ public class Controlador extends HttpServlet {
                     proveedor.setDireccion(Direccion);
                     proveedor.setTelefono(Telefono);
                     proveedorDAO.agregarProveedor(proveedor);
+                    request.getRequestDispatcher("Controlador?menu=Proveedores&accion=ListarProveedores").forward(request, response);
+                    break;
+                case "EditarProveedor":
+                    codProveedor = Integer.parseInt(request.getParameter("codigoProveedor"));
+                    Proveedor p = proveedorDAO.listarCodigoProveedor(codProveedor);
+                    request.setAttribute("proveedor", p);
+                    request.getRequestDispatcher("Controlador?menu=Proveedores&accion=ListarProveedores").forward(request, response);
+                    break;
+                    
+                case "ActualizarProveedor":
+                    String nombreProv = request.getParameter("txtNombreProveedor");
+                    String direccionPro = request.getParameter("txtDireccionProveedor");
+                    String telefonoPro = request.getParameter("txtTelefonoProveedor");
+                    proveedor.setNombreProveedor(nombreProv);
+                    proveedor.setDireccion(direccionPro);
+                    proveedor.setTelefono(telefonoPro);
+                    proveedor.setCodigoProveedor(codProveedor);
+                    proveedorDAO.actualizarProveedor(proveedor);
+                    request.getRequestDispatcher("Controlador?menu=Proveedores&accion=ListarProveedores").forward(request, response);
+                    break;
+                    
+                case "EliminarProveedor":
+                    codProveedor = Integer.parseInt(request.getParameter("codigoProveedor"));
+                    proveedorDAO.eliminarProveedor(codProveedor);
                     request.getRequestDispatcher("Controlador?menu=Proveedores&accion=ListarProveedores").forward(request, response);
                     break;
             }

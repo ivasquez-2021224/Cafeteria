@@ -21,15 +21,15 @@
                         <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Proveedores</h1>
                         <div class="form-group">
                             <label>Nombres:</label>
-                            <input type="text" name="txtNombreProveedor" class="form-control">
+                            <input type="text" value="${proveedor.getNombreProveedor()}" name="txtNombreProveedor" class="form-control">
                             <label>Dirección:</label>
-                            <input type="text" name="txtDireccionProveedor" class="form-control">
+                            <input type="text" value="${proveedor.getDireccion()}" name="txtDireccionProveedor" class="form-control">
                             <label>Teléfono:</label>
-                            <input type="text" name="txtTelefonoProveedor" class="form-control">
+                            <input type="text" value="${proveedor.getTelefono()}" name="txtTelefonoProveedor" class="form-control">
                         </div>
                         <label>ACCIONES</label>
                         <input type="submit" name="accion" value="AgregarProveedor" class="btn btn-info">
-                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
+                        <input type="submit" name="accion" value="ActualizarProveedor" class="btn btn-success">
                     </form>
                 </div>
             </div>
@@ -53,8 +53,8 @@
                         <td>${proveedor.getDireccion()}</td>
                         <td>${proveedor.getTelefono()}</td>
                         <td>
-                    <a class="btn btn-warning" href="">Editar</a>
-                    <a class="btn btn-danger" href="">Eliminar</a>
+                    <a class="btn btn-warning" href="Controlador?menu=Proveedores&accion=EditarProveedor&codigoProveedor=${proveedor.getCodigoProveedor()}">Editar</a>
+                    <a class="btn btn-danger" href="Controlador?menu=Proveedores&accion=EliminarProveedor&codigoProveedor=${proveedor.getCodigoProveedor()}">Eliminar</a>
                         </td>
                         </tr>
                         </c:forEach>
@@ -69,4 +69,3 @@
 
     </body>
 </html>
-
