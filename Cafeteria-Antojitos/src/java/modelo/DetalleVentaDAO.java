@@ -14,10 +14,18 @@ public class DetalleVentaDAO {
     PreparedStatement ps;
     ResultSet rs;
     int resp;
+      double sumatoria = 0;
+    private double total = 0;
+
+    public double getTotal() {
+        return total;
+    }
     
-    public List listarDetalleVenta(){
-        String sql = "select * from DetalleVenta";
-        List<DetalleVenta> listarDetalleVenta = new ArrayList<>();
+  public List listarCodigoVentaDV(int codigoVenta){
+        String sql = "Select * from DetalleVenta where codigoVenta = "+codigoVenta;
+       List<DetalleVenta> listarDetalleVenta = new ArrayList<>();
+        sumatoria = 0;
+        total = 0;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -30,6 +38,8 @@ public class DetalleVentaDAO {
                 dv.setCodigoProducto(rs.getInt(4));
                 dv.setCodigoVenta(rs.getInt(5));
                 listarDetalleVenta.add(dv);
+                sumatoria = dv.getCantidad()*dv.getPrecio();
+                total = total + sumatoria;
             }
         }catch(Exception e){
             e.printStackTrace();

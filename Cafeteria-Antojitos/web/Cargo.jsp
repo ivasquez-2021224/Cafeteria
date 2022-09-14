@@ -13,11 +13,12 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <title>Cargo</title>
     </head>
-    <body>
+    <body style="background-color: #b3b3b1;">
         <div class="d-flex">
             <div class="card col-sm-5">
                 <div class="card-body">
                     <form action="Controlador?menu=Cargo" method="POST">
+                        <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Cargos</h1>
                         <div class="form-group">
                             <label>TIPO DE CARGO:</label>
                             <input type="text" name="txtTipoCargo" class="form-control">
@@ -43,8 +44,8 @@
                             <td>${cargo.getCodigoCargo()}</td>
                             <td>${cargo.getTipoCargo()}</td>
                             <td>
-                                <a class="btn btn-warning" href="">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Cargo&accion=Editar&codigoCargo=${cargo.getCodigoCargo()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Cargo&accion=Eliminar&codigoCargo=${cargo.getCodigoCargo()}">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach>
