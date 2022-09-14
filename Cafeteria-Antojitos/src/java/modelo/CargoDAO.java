@@ -20,8 +20,8 @@ public class CargoDAO {
     //MÉTODO DE LISTAR
     
     public List listar(){
-        String sql = "select * from Cargo";
-        List<Cargo> listaCargo = new ArrayList<Cargo>();
+        String sql = "select * from cargo";
+        List<Cargo> listaCargo = new ArrayList<>();
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -81,11 +81,12 @@ public class CargoDAO {
     
     //MÉTODO PARA EDITAR
     public int actualizar(Cargo ca){
-        String sql = "Update cargo set tipoCargo = ?";
+        String sql = "Update cargo set tipoCargo = ? where codigoCargo = ?";
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             ps.setString(1, ca.getTipoCargo());
+            ps.setInt(2, ca.getCodigoCargo());
             ps.executeUpdate();
         }catch(Exception e){
             e.printStackTrace();
@@ -97,8 +98,8 @@ public class CargoDAO {
     
     
     //MÉTODO PARA ELIMINAR
-    public void eliminar(int id){
-        String sql = "delete from cargo where codigoCargo = "+id;
+    public void eliminar(int codCargo){
+        String sql = "delete from cargo where codigoCargo = "+codCargo;
         try{
             con = cn.Conexion();
             ps = con.prepareStatement(sql);

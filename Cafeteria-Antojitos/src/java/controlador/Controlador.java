@@ -70,6 +70,7 @@ public class Controlador extends HttpServlet {
     int codCategoria;
     int codMarca;
     int codProveedor;
+    int codCargo;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -99,16 +100,25 @@ public class Controlador extends HttpServlet {
                     break;
 
                 case "Editar":
-
-                    break;
-
+                        codCargo = Integer.parseInt(request.getParameter("codigoCargo"));
+                        Cargo c = cargoDAO.listarCodigoCargo(codCargo);
+                        request.setAttribute("cargo", c);
+                        request.getRequestDispatcher("Controlador?menu=Cargo&accion=ListarCargo").forward(request, response);
+                        break;   
+                
                 case "Actualizar":
-
-                    break;
+                        String tipoCar = request.getParameter("txtTipoCargo");
+                        cargo.setTipoCargo(tipoCar);
+                        cargo.setCodigoCargo(codCargo);
+                        cargoDAO.actualizar(cargo);
+                        request.getRequestDispatcher("Controlador?menu=Cargo&accion=ListarCargo").forward(request, response);
+                        break;
 
                 case "Eliminar":
-
-                    break;
+                        codCargo = Integer.parseInt(request.getParameter("codigoCargo"));
+                        cargoDAO.eliminar(codCargo);
+                        request.getRequestDispatcher("Controlador?menu=Cargo&accion=ListarCargo").forward(request, response);
+                        break;
             }
             request.getRequestDispatcher("Cargo.jsp").forward(request, response);
         } else if (menu.equals("Clientes")) {

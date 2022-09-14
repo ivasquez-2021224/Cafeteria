@@ -44,8 +44,8 @@
                             <td>${cargo.getCodigoCargo()}</td>
                             <td>${cargo.getTipoCargo()}</td>
                             <td>
-                                <a class="btn btn-warning" href="">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Cargo&accion=Editar&codigoCargo=${cargo.getCodigoCargo()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Cargo&accion=Eliminar&codigoCargo=${cargo.getCodigoCargo()}">Eliminar</a>
                             </td>
                         </tr>
                         </c:forEach>
