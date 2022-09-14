@@ -486,7 +486,7 @@ public class Controlador extends HttpServlet {
                     if (ventas == null) {
 
                     } else {
-                        detalle.setCodigoVenta(ventas.getCodigoVenta());
+                        detalle.setCodigoVenta(codVenta);
                         
                         if (codVenta != 0) {
                             request.setAttribute("detalleVenta", detalle);
