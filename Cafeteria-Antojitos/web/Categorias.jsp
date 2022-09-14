@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <title>Categorias</title>
     </head>
-    <body style="background-color: #b3b3b1;">
+     <body style="background-color: transparent;">
         <div class="d-flex">
             <div class="card col-sm-5">
                 <div class="card-body">
@@ -25,13 +25,13 @@
                             <label>Descripcion Categoria:</label>
                             <input type="text" value="${categoria.getDescripcionCategoria()}" name="txtDescripcionCategoria" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="AgregarCategorias" class="btn btn-info">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
-            <div class=" col-sm-5">
-                <table class="table table-hover">
+            <div class=" col-sm-7">
+               <table class="table table-secondary table-striped table-hover">
                     <thead>
                         <tr>
                             <td>CODIGO</td>

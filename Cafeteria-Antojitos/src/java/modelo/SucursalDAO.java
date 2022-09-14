@@ -59,48 +59,48 @@ public class SucursalDAO {
         return scu;
     }
     
-//    public Proveedor listarCodigoSucursal(int id){
-//        Proveedor hp = new Proveedor();
-//        String sql = "Select * from Sucursal where codigoSucursal = " +id;
-//        try{
-//            con = cn.Conexion();
-//            ps = con.prepareStatement(sql);
-//            rs = ps.executeQuery();
-//            while (rs.next()){
-//                hp.setNombreProveedor(rs.getString(2));
-//                hp.setDireccion(rs.getString(3));
-//                hp.setTelefono(rs.getString(4));
-//            }
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }
-//        return hp;
-//    }
+    public Sucursal listarCodigoSucursal(int id){
+        Sucursal sc = new Sucursal();
+        String sql = "Select * from Sucursal where codigoSucursal = " +id;
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()){
+                sc.setCodigoSucursal(rs.getInt(1));
+                sc.setNombreSucursal(rs.getString(2));
+                sc.setDireccion(rs.getString(3));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return sc;
+    }
     
-//    public int actualizar(Sucursal hp){
-//        String sql = "Update Sucursal set  direccion = ?, telefono = ?";
-//        try{
-//            con = cn.Conexion();
-//            ps = con.prepareStatement(sql);
-//            ps.setString(1, hp.getDireccion());
-//            ps.setString(2, hp.getTelefono());
-//            ps.setInt(3, hp.getCodigoSucursal());
-//            ps.executeUpdate();
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }
-//        return scu;
-//    }
-//    
-//    public void eliminar(int id){
-//        String sql = "Delete from Sucursal where codigoSucursal =" +id;
-//        try{
-//        con = cn.Conexion();
-//        ps = con.prepareStatement(sql);
-//        ps.executeUpdate();
-//        }catch(Exception e){
-//            e.printStackTrace();
-//        }
-//        
-//    }
+    public int actualizar(Sucursal sc){
+        String sql = "Update Sucursal set nombreSucursal = ?, direccion = ? where codigoSucursal = ?" ;
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, sc.getNombreSucursal());
+            ps.setString(2, sc.getDireccion());
+            ps.setInt(3, sc.getCodigoSucursal());
+            ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return scu;
+    }
+    
+    public void eliminar(int id){
+        String sql = "Delete from Sucursal where codigoSucursal =" +id;
+        try{
+        con = cn.Conexion();
+        ps = con.prepareStatement(sql);
+        ps.executeUpdate();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+    }
 }

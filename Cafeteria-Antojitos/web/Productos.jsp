@@ -13,12 +13,12 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <title>Productos</title>
     </head>
-     <body style="background-color: #b3b3b1;">
+      <body style="background-color: transparent;">
         <div class="d-flex">
             <div class="card col-lg-4">
                 <div class="card-body">
                     <form action="Controlador?menu=Productos" method="POST">
-                       
+                       <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Productos</h1>
                         <div class="form-group">
                             <label>NombresProducto:</label>
                             <input type="text" value="${producto.getNombreProducto()}" name="txtNombreProducto" class="form-control">
@@ -38,14 +38,14 @@
                             <label>CodigoCategoria:</label>
                             <input type="text" value="${producto.getCodigoCategoria()}" name="txtCodigoCategoria" class="form-control">
                          </div>
-                         <input type="submit" name="accion" value="AgregarProducto" class="btn btn-info">
-                         <input type="submit" name="accion" value="ActualizarProducto" class="btn btn-success">
+                         <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
             
             <div class="col-sm-8">
-                <table class="table table-hover">
+                <table class="table table-secondary table-striped table-hover">
                     <thead>
                         <tr>
                             <td>CODIGOPRODUCTO</td>
@@ -69,8 +69,8 @@
                           <td>${producto.getCodigoMarca()}</td> 
                           <td>${producto.getCodigoCategoria()}</td>
                           <td>
-                              <a class="btn btn-warning" href="Controlador?menu=Productos&accion=EditarProducto&codigoProducto=${producto.getCodigoProducto()}" >Editar</a>
-                              <a class="btn btn-danger" href="Controlador?menu=Productos&accion=EliminarProducto&codigoProducto=${producto.getCodigoProducto()}">Eliminar</a>  
+                              <a class="btn btn-warning" href="Controlador?menu=Productos&accion=Editar&codigoProducto=${producto.getCodigoProducto()}" >Editar</a>
+                              <a class="btn btn-danger" href="Controlador?menu=Productos&accion=Eliminar&codigoProducto=${producto.getCodigoProducto()}">Eliminar</a>  
                           </td> 
                         </tr>
                         </c:forEach>

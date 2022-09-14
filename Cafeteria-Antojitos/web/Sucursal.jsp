@@ -13,7 +13,7 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:400;800;900" rel="stylesheet">
         <title>Clientes</title>
     </head>
-    <body style="background-color: #b3b3b1;">
+     <body style="background-color: transparent;">
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
@@ -21,20 +21,20 @@
                         <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Sucursales</h1>
                         <div class="form-group">
                             <label>Nombre sucursal:</label>
-                            <input type="text" name="txtNombreSucursal" class="form-control">
+                            <input type="text" name="txtNombreSucursal" value="${sucursall.getNombreSucursal()}" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Direccion:</label>
-                            <input type="text" name="txtDireccion" class="form-control">
+                            <input type="text" name="txtDireccion" value="${sucursall.getDireccion()}" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="AgregarSucursal" class="btn btn-info">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success" >
                     </form>
                 </div>
             </div>
 
             <div class="col-sm-8">
-                <table class="table table-hover">
+              <table class="table table-secondary table-striped table-hover">
                     <thead>
                         <tr>
                             <td>CODIGO</td>
@@ -51,8 +51,8 @@
                             <td>${sucursal.getNombreSucursal()}</td>
                             <td>${sucursal.getDireccion()}</td>
                             <td>
-                                <a class="btn btn-warning" href="#">Editar</a>
-                                <a class="btn btn-danger" href="#">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=Sucursal&accion=Editar&codigoSucursal=${sucursal.getCodigoSucursal()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=Sucursal&accion=Eliminar&codigoSucursal=${sucursal.getCodigoSucursal()}">Eliminar</a>
                             </td>
                         </tr>
                     </c:forEach>

@@ -68,6 +68,7 @@ public class CargoDAO {
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()){
+                ca.setCodigoCargo(rs.getInt(1));
                 ca.setTipoCargo(rs.getString(2));
             }
         }catch(Exception e){

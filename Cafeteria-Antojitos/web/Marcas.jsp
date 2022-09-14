@@ -14,11 +14,12 @@
 
         <title>Marcas</title>
     </head>
-    <body  style="background-color: #b3b3b1;">
+    <body style="background-color: transparent;">
         <div class="d-flex">
             <div class="card col-lg-4"> 
                 <div class="card-body">
                     <form action="Controlador?menu=Marcas" method="POST">
+                        <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Marcas</h1>
                         <div class="form-group">
                             <label>Nombre Marca:</label>
                             <input  type="text" value="${marca.getNombreMarca()}" name="txtNombresMarca" class="form-control">
@@ -34,13 +35,13 @@
             </div>
 
             <div class="col-lg-8">
-                <table class="table table-hover">
+                <table class="table table-secondary table-striped table-hover">
                     <thead>
                         <tr>
-                            <td>Codigo Marcas</td>
-                            <td>Nombres Marcas</td>
-                            <td>Proveedores</td>
-                            <td>Acciones</td>
+                                <td>CODIGO MARCAS</td>
+                            <td>NOMBRES MARCA</td>
+                            <td>PROVEEDOR</td>
+                            <td>ACCIONES</td>
 
                         </tr> 
                     </thead>

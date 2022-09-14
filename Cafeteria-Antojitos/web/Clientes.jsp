@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Poppins:400;800;900" rel="stylesheet">
         <title>Clientes</title>
     </head>
-    <body style="background-color: #b3b3b1;">
+     <body style="background-color: transparent;">
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
@@ -44,14 +44,14 @@
                             <label>Membresía:</label>
                             <input type="text"  name="txtMembresiaCliente" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="AgregarCliente" class="btn btn-info">
-                        <input type="submit" name="accion" value="ActualizarCliente" class="btn btn-success" >
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
+                        <input type="submit" name="accion" value="Actualizar" class="btn btn-success" >
                     </form>
                 </div>
             </div>
 
             <div class="col-sm-8">
-                <table class="table table-hover">
+                <table class="table table-secondary table-striped table-hover">
                     <thead>
                         <tr>
                             <td>CODIGO</td>

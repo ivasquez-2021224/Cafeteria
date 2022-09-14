@@ -14,62 +14,96 @@
 
         <title>Detalles De Venta</title>
     </head>
-    <body style="background-color: #b3b3b1;">
+     <body style="background-color: transparent;">
        <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
                     <form action="Controlador?menu=DetalleVenta" method="POST">
                         <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Detalle de Ventas</h1>
-                        <div class="form-group">
-                            <lable>CANTIDAD</lable>
-                            <input type="text" name="txtcantidad" class="form-control">
+                     
+                        <div class="input-group">
+                            <label>DPI Cliente</label>
+                            <input type="text" name="txtDPICliente" value="${clientess.getDPICliente()}" class="form-control rounded" placeholder="DPI Cliente" > <input type="submit" value="Verificacion" name="accion" class="btn btn-outline-primary" >
+                        </div>    
+                        <div>
+                            <br><input type="text" name="txtNombreCliente" value="${clientess.getNombreCliente()} ${clientess.getApellidoCliente()}" class="form-control" placeholder="Nombre Cliente">
                         </div>
-                        <div class="form-group">
-                            <label>PRECIO</label>
-                            <input type="text" name="txtPrecio" class="form-control">
+                        <br><div class="input-group">
+                                <br>
+                                <label>Datos Producto:</label>
+                                <br> <input type="text" name="txtDatosProducto" value="${producto.getCodigoProducto()}" class="form-control rounded" placeholder="Dato del Producto" > <input type="submit" value="Verificacion" name="accion" class="btn btn-outline-primary"> 
+                            </div>
+                            
+                            <div>
+                                <br> <input type="text" name="txtNombreProducto" value="${producto.getNombreProducto()}" class="form-control" placeholder="Nombre Producto">
+                            </div>
+                            
+                            <div>
+                                <br> <input type="text" name="txtPrecioProducto" value="${producto.getPrecio()}" class="form-control" placeholder="Precio Producto">
+                            </div>
+                               
+                            <div>
+                                <br> <input type="text" name="txtStock" value="${producto.getStock()}" class="form-control" placeholder="Stock">
+                            </div>
+                                
+                            <div>
+                                <label>Cantidad</label>
+                                <input type="text" value="${detalleVenta.getCantidad()}" name="txtCantidad" class="form-control">
+                            </div>
+                            
+                            <br><div class="input-group">
+                            <label>Codigo Venta</label>
+                            <input type="text" name="txtCodVenta" value="${detalleVenta.getCodigoVenta()}" class="form-control rounded" placeholder="Codigo Venta" > <input type="submit" value="Verificacion" name="accion" class="btn btn-outline-primary" >
+                            <p>${mensaje}</p>
                         </div>
-                        <div class="form-group">
-                            <label>CODIGO PRODUCTO</label>
-                            <input type="text" name="txtCodProducto" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>CODIGO VENTA</label>
-                            <input type="text" name="txtCodVenta" class="form-control">
-                        </div>
-                        
-                        <input type="submit" name="accion" value="AgregarDetalle" class="btn btn-info">
+                            <br>
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
             <div class="col-sm-8">
-                <table class="table table-hover">
+                <table class="table table-secondary table-striped table-hover">
                     <thead>
                         <tr>
                             <td>CODIGO</td>
                             <td>CANTIDAD</td>
                             <td>PRECIO</td>
                             <td>CODIGO PRODUCTO</td>
+                            <td>SUB-TOTAL</td>
                             <td>CODIGO VENTA</td>
                             <td>ACCIONES</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="detalleVenta" items="${Detalles}">
+                        <c:forEach var="detalleVenta" items="${ventass}">
                             <tr>
                             <td>${detalleVenta.getCodigoDetalleVenta()}</td>
                             <td>${detalleVenta.getCantidad()}</td>
                             <td>${detalleVenta.getPrecio()}</td>
                             <td>${detalleVenta.getCodigoProducto()}</td>
+                            <td>${detalleVenta.getCantidad() * detalleVenta.getPrecio()}</td>
                             <td>${detalleVenta.getCodigoVenta()}</td>
+                           
                             <td>
-                                <a class="btn btn-warning" href="">Editar</a>
-                                <a class="btn btn-danger" href="">Eliminar</a>
+                                <a class="btn btn-warning" href="Controlador?menu=DetalleVenta&accion=Editar&codigoDetalleVenta=${detalleVenta.getCodigoDetalleVenta()}">Editar</a>
+                                <a class="btn btn-danger" href="Controlador?menu=DetalleVenta&accion=Eliminar&codigoDetalleVenta=${detalleVenta.getCodigoDetalleVenta()}">Eliminar</a>
                             </td>
                             </tr>
                         </c:forEach>
                         
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Total:</td>
+                            <td>${total}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>    

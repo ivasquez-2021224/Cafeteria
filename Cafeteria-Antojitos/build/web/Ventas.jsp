@@ -13,11 +13,12 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
         <title>Vista Ventas</title>
     </head>
-    <body style="background-color: #b3b3b1;">
+     <body style="background-color: transparent;">
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
                     <form action="Controlador?menu=Ventas" method="POST">
+                        <h1 style="font-family: 'Poppins',sans-serif; align-content: center;">Ventas</h1>
                         <div class="form-group">
                             <label>Fecha:</label>
                             <input type="text" value="${venta.getFecha()}" name="txtFecha" class="form-control">
@@ -38,17 +39,17 @@
                             <label>Código Empleado:</label>
                             <input type="text" value="${venta.getCodigoEmpleado()}" name="txtCodigoEmpleado" class="form-control">
                         </div>
-                        <input type="submit" name="accion" value="AgregarVentas" class="btn btn-info">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success">
                     </form>
                 </div>
             </div>
 
             <div class="col-sm-7">
-                <table class="table table-hover">
+               <table class="table table-secondary table-striped table-hover">
                     <thead>
                         <tr>
-                            <td style="width: 5%;">CÓDIGO</td>
+                            <td style="width: 5%;">CODIGO</td>
                             <td style="width: 15%;">FECHA</td>
                             <td style="width: 5%;">MONTO</td>
                             <td style="width: 15%;">NUM. SERIE</td>

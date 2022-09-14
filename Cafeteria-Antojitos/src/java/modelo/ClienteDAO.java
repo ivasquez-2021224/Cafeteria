@@ -85,6 +85,29 @@ public class ClienteDAO {
         return cliente;
     }
     
+     public Cliente listarDPICliente(String DPICliente){
+        Cliente  cliente = new Cliente();
+        String sql = "Select * from Clientes where DPICliente ="+DPICliente;
+        try{
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next()){
+                cliente.setCodigoCliente(rs.getInt(1));
+                cliente.setDPICliente(rs.getString(2));
+                cliente.setNombreCliente(rs.getString(3));
+                cliente.setApellidoCliente(rs.getString(4));
+                cliente.setDireccionCliente(rs.getString(5));
+                cliente.setTelefonoCliente(rs.getString(6));
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            System.out.println("Error en el metodo buscar cliente: "+e);
+        }
+        
+        return cliente;
+    }
+    
     //Metodo para actualizar clientes
     public int actualizarCliente(Cliente cliente){
         String sql = "Update Clientes  set DPICliente=?, nombreCliente=?, apellidoCliente=?, direccionCliente=?, telefonoCliente=? where codigoCliente=?";

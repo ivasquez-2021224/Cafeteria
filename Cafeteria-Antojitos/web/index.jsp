@@ -147,7 +147,7 @@
     <body>
     <div id="loginContainer">
         <div id="loginPicture">
-            <img src="img/Logo.png" alt="" class="imgdiv">
+            <img src="img/LogoLogin.png" alt="" class="imgdiv">
         </div>  
         <div id="loginPictureCover"> </div>
         <form class="loginForm" action="Validar" method="POST">                            

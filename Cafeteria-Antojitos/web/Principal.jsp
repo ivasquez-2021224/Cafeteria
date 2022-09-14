@@ -13,42 +13,54 @@
 
         <title>Menu Principal</title>
     </head>
-    <body style="background-color: #b3b3b1;">
-        <nav class="navbar navbar-expand-lg nvbar-light" style="background-color: #49240f">
+    <style>
+        .fondo{
+            background-color: white;
+            border-radius: 30px;
+            margin: 0% 30% 0% 30%;
+        }
+    </style>
+    <script>
+        function limpieza(){
+            document.getElementById("limpiar").innerHTML = "";
+        }    
+    </script>
+    <header>
+        <nav class="navbar navbar-expand-lg nvbar-light" style="background-color: #000">
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                   <li class="nav-item active">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Home" target="myFrame">Home</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Home" target="myFrame" onclick="limpieza()">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Clientes&accion=ListarClientes" target="myFrame">Clientes</a>
+                    <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Clientes&accion=ListarClientes" target="myFrame" onclick="limpieza()">Clientes</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Categorias&accion=ListarCategorias" target="myFrame">Categorias</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Categorias&accion=ListarCategorias" target="myFrame" onclick="limpieza()">Categorias</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Cargo&accion=ListarCargo" target="myFrame">Cargo</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Cargo&accion=ListarCargo" target="myFrame" onclick="limpieza()">Cargo</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Sucursal&accion=ListarSucursal" target="myFrame">Sucursal</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Sucursal&accion=ListarSucursal" target="myFrame" onclick="limpieza()">Sucursal</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Marcas&accion=ListarMarcas" target="myFrame">Marcas</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Marcas&accion=ListarMarcas" target="myFrame" onclick="limpieza()">Marcas</a>
                   </li>
                   <li class="nav-item">
-                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Productos&accion=ListarProducto" target="myFrame">Productos</a>                     
+                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Productos&accion=ListarProducto" target="myFrame" onclick="limpieza()">Productos</a>                     
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Empleados&accion=ListarEmpleados" target="myFrame">Empleados</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Empleados&accion=ListarEmpleados" target="myFrame" onclick="limpieza()">Empleados</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Ventas&accion=ListarVentas" target="myFrame">Ventas</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Ventas&accion=ListarVentas" target="myFrame" onclick="limpieza()">Ventas</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=DetalleVenta&accion=ListarDetalle" target="myFrame">Detalle de la venta</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=DetalleVenta&accion=ListarDetalle" target="myFrame" onclick="limpieza()">Detalle de la venta</a>
                   </li>
                   <li class="nav-item">
-                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Membresia&accion=ListarMembresia" target="myFrame">Membresia</a>
+                      <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" href="Controlador?menu=Membresia&accion=ListarMembresia" target="myFrame" onclick="limpieza()">Membresia</a>
                   </li>
                   <li class="nav-item">
                       <a style="margin-left: 10px; border: none" class="btn btn-outline-warning" class="btn btn-outline-light" href="Controlador?menu=Proveedores&accion=ListarProveedores" target="myFrame">Proveedores</a>
@@ -72,8 +84,19 @@
                 </div>                  
               </div>
          </nav>
+    </header>
+    <body style="background-image: url(https://media.giphy.com/media/ROyijmazFKRc4/giphy.gif);">
+        <div id="limpiar" style="margin-top: 5%">
+            <em><Center><h1 class="text-warning fondo">Bienvenido al la pagina de Cafeteria Antojitos:</h1>
+                        <br><br>
+                        <img src="img/Logo.png" alt=""/>
+                        <h2 class="text-warning fondo">Cafeteria Antojitos</h2>
+                        <br><br>
+                        <p class="text-warning fondo">En esta pagina podra encontrar todo lo relacionado con la organización y la informacion
+                            necesaria para un mejor funcionamiento de el establecimiento</p></Center></em>
+                    </div>
                     <div class="m-4" style="height: 655px; ">
-                        <iframe name="myFrame" style="height: 100%; width: 100%; border: none;"></iframe>
+                            <iframe name="myFrame" style="height: 100%; width: 100%; border: none;"></iframe>
                     </div>
         
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

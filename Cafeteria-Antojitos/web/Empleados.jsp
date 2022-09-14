@@ -14,7 +14,7 @@
 
         <title></title>
     </head>
-    <body style="background-color: #b3b3b1;">
+     <body style="background-color: transparent;">
         <div class="d-flex">
             <div class="card col-sm-4">
                 <div class="card-body">
@@ -48,13 +48,13 @@
                             <label>Codigo Sucursal</label>
                             <input type="text" name="txtCodigoSucursal" class="form-control">
                         </div>                       
-                        <input type="submit" name="accion" value="AgregarEmpleado" class="btn btn-info">
+                        <input type="submit" name="accion" value="Agregar" class="btn btn-info">
                         <input type="submit" name="accion" value="Actualizar" class="btn btn-success"> 
                     </form>
                 </div>                
             </div>
             <div class="col-sm-8">
-                <table class="table table-hover">
+                <table class="table table-secondary table-striped table-hover">
                     <thead>
                         <tr>
                             <td>CODIGO</td>
